@@ -2,31 +2,21 @@
 $pageTitle = 'Sign Up - iReport';
 //$additionalCSS = ['signup.css', 'bootstrap.min.css'];
 
-//include 'db/database.php';
+require 'db/database.php';
 
 if (isset($_POST['regist'])) {
-    $name = $_POST['name'];
-    $username = $_POST['username'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    
-    if ($password === $confirm_password) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO user (nama, username, no_telp, email, password, user_role) VALUES ('$name', '$username', '$phone', '$email', '$hashed_password', 'user')";
-        
-        if ($conn->query($query)) {
-            $_SESSION['role'] = 'user';
-            header("Location: index.php?page=home");
-            exit();
-        } else {
-            echo "Error: " . $query . "<br>" . $conn->error;
-        }
+    if (regist($_POST) > 0) {
+        echo "<script>
+        alert('User registered successfully.');
+        </script>";
+        $_SESSION['role'] = 'user';
+        header("Location: index.php?page=home");
+        exit();
     } else {
-        echo "<script>alert('Passwords do not match.');</script>";
+        echo "Error: " . mysqli_error($conn);
     }
 }
+
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">

@@ -21,3 +21,7 @@ v0.1.14: fixed login and signup ui and fucntion. report ui broken
 v0.1.15:
 profile. datanya belom keambil dari database. masi belom resposive (ini keknya hampir semua). ui masi berantakan.
 jadwal. ui masi jelek pol.
+
+
+v0.1.16:
+masi kaya v0.1.15. bedanya di kode php bagian login sama sign up. lebih simple sama gampang dimengerti

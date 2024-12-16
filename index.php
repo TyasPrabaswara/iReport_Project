@@ -52,7 +52,7 @@
 <body>
     <?php
     include 'includes/header.php';
-    include 'db/database.php';
+    // include 'db/database.php';
     ?>
     <main>
         <?php
