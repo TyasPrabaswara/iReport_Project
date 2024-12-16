@@ -10,7 +10,7 @@
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
     
     switch ($page) {
-         case 'home':
+        case 'home':
             echo '<link rel="stylesheet" href="css/home.css">';
             break;
         case 'berita':

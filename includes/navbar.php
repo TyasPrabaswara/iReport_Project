@@ -7,7 +7,7 @@ isinya button
 
 <?php
 //start session
-// session_start();
+session_start();
 
 //TEST PURPOSES ONLY, REMOVE WHEN PRODUCT IS FINISHED
 //Uncomment one of the following lines to test different roles
@@ -18,7 +18,7 @@ isinya button
 //check user role
 $user_role = isset($_SESSION['role']) ? $_SESSION['role'] : 'guest';
 // Get current page name
-$current_page = basename($_SERVER['PHP_SELF']);
+//$current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
 
@@ -30,6 +30,13 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <title>Navigation System</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <script>
+    function confirmLogout(){
+        if (confirm("Are you sure you want to log out?")){
+            window.location.href = "logout.php";
+        }
+    }
+    </script>
 </head>
 
 <nav class="navbar">
@@ -45,7 +52,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <div class="dropdown-content">
                     <a href="index.php?page=profile">Profile</a>
                     <a href="index.php?page=dashboard">Dashboard</a>
-                    <a href="logout.php">Log Out</a>
+                    <a href="#" onclick="confirmLogout()">Log Out</a>
                 </div>
             </div>
     <?php elseif ($user_role === 'user'): ?>
@@ -54,7 +61,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                 <button class="dropbtn">Menu</button>
                 <div class="dropdown-content">
                     <a href="index.php?page=profile">Profile</a>
-                    <a href="logout.php">Log Out</a>
+                    <a href="#" onclick="confirmLogout()">Log Out</a>
                 </div>
             </div>
     <?php else: ?>
