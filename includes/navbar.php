@@ -12,7 +12,7 @@ isinya button
 //TEST PURPOSES ONLY, REMOVE WHEN PRODUCT IS FINISHED
 //Uncomment one of the following lines to test different roles
 //$_SESSION['role'] = 'guest'; // for guest
-$_SESSION['role'] = 'user'; //for regular user
+//$_SESSION['role'] = 'user'; //for regular user
 //$_SESSION['role'] = 'admin'; //for admin
 
 //check user role

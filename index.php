@@ -59,10 +59,11 @@
                     $file_path = "page/jadwal.php";
                     break;
                 case 'signup':
-                    $file_path = "page/signUp.php";
+                    include 'db/database.php';  
+                    $file_path = "authentication/signUp.php";
                     break;
                 case 'login':
-                    $file_path = "page/login.php";
+                    $file_path = "authentication/login.php";
                     break;
                 case 'profile' :
                     $file_path = "page/profile.php";
@@ -75,6 +76,7 @@
                     include 'includes/navbarReport.php';    
                     $file_path = "page/reportLocation.php";
                     break;
+                
             }
         }
 
