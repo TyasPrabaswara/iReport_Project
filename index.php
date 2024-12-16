@@ -68,9 +68,11 @@
                     $file_path = "page/profile.php";
                     break;
                 case 'reportTransport':
+                    include 'includes/navbarReport.php';
                     $file_path = "page/reportTransport.php";
                     break;
                 case 'reportLocation':
+                    include 'includes/navbarReport.php';    
                     $file_path = "page/reportLocation.php";
                     break;
             }

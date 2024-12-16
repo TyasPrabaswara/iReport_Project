@@ -4,4 +4,5 @@ define('SITE_URL', 'http://localhost');
 
 // Add any other configuration constants you need
 define('SITE_NAME', 'iReport');
+
 ?>
