@@ -1,6 +1,6 @@
 /* Container for the login form */
 .container {
-    max-width: 400px; /* Set a maximum width for the container */
+    max-width: 300px; /* Set a maximum width for the container */
     margin: 50px auto; /* Center the container horizontally and add some top margin */
     padding: 20px; /* Add padding inside the container */
     background-color: white; /* Set background color to white */
