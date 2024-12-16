@@ -1,0 +1,2 @@
+<!-- include navbarMenuItems -->
+<!-- include navbarHistory -->
