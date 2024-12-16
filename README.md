@@ -17,3 +17,7 @@ v0.1.13:
 istg if the files are duped and ends somewhere else again
 
 v0.1.14: fixed login and signup ui and fucntion. report ui broken
+
+v0.1.15:
+profile. datanya belom keambil dari database. masi belom resposive (ini keknya hampir semua). ui masi berantakan.
+jadwal. ui masi jelek pol.

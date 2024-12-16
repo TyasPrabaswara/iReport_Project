@@ -6,7 +6,7 @@ isinya button
 
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
-// $additionalCSS = ['navbarReport.css'];
+$additionalCSS = ['navbarReport.css'];
 ?>
 <aside class="sidebar">
     <nav class="sidebar-nav">

@@ -4,8 +4,8 @@
 <?php
 $pageTitle = 'Report Transport - iReport';
 // $additionalCSS = ['reportTransport.css'];
-include 'includes/navbarReport.php';
-include 'includes/header.php';
+// include 'includes/navbarReport.php';
+// include 'includes/header.php';
 ?>
 
 <main>

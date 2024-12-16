@@ -45,5 +45,5 @@ $pageTitle = 'Home - iReport';
             </a>
         </div>
     </section>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </main>

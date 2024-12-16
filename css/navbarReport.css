@@ -3,9 +3,14 @@
     width: 250px;
     background-color: #fff;
     padding: 20px 0;
+    margin-top: 80px;
+    margin-left: 80px;
     border-right: 1px solid #eee;
-    position: fixed;
+    /* position: fixed; */
+    float: left;
     height: 60vh;
+    border-radius: 8px;
+
 }
 
 .sidebar-menu {

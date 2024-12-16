@@ -3,8 +3,8 @@
 
 <?php
 $pageTitle = 'Report Location - iReport';
-$additionalCSS = ['reportTransport.css'];
-include 'includes/navbarReport.php';
+// $additionalCSS = ['reportTransport.css'];
+// include 'includes/navbarReport.php';
 ?>
 
 <main>
