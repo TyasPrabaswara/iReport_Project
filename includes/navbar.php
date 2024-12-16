@@ -33,7 +33,7 @@ $user_role = isset($_SESSION['role']) ? $_SESSION['role'] : 'guest';
     <script>
     function confirmLogout(){
         if (confirm("Are you sure you want to log out?")){
-            window.location.href = "logout.php";
+            window.location.href = "authentication/logout.php";
         }
     }
     </script>

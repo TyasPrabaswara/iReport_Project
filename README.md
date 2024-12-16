@@ -6,9 +6,12 @@ note for group members:
 3. please also notify on the gc of which part you have done
 
 documentations:
-v0.1.0 - v0.1.9
+v0.1.0 - v0.1.9:
 i forgot
 
-v0.1.10
+v0.1.10:
 user session functionality works
 login and sign up ui borked asf
+
+v.1.10.13:
+istg if the files are duped and ends somewhere else again
