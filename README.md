@@ -13,5 +13,7 @@ v0.1.10:
 user session functionality works
 login and sign up ui borked asf
 
-v.1.10.13:
+v0.1.13:
 istg if the files are duped and ends somewhere else again
+
+v0.1.14: fixed login and signup ui and fucntion. report ui broken

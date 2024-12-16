@@ -1,9 +1,9 @@
 <?php
 $pageTitle = 'Login - iReport';
-$additionalCSS = ['login.css'];
+//$additionalCSS = ['login.css'];
 session_start();
 
-include 'db/database.php';
+//include 'db/database.php';
 
 if (isset($_SESSION['role'])){
   header("Location: index.php?page=home");
@@ -48,27 +48,35 @@ $conn->close();
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-<body>
-    <div class="container">
-        <h2>Login</h2>
-        <?php if (isset($error_message)): ?>
-            <div class="error"><?php echo $error_message; ?></div>
-        <?php endif; ?>
-        <form action="" method="POST">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>" required>
+<body style="background-color: #f5f5f5;" class="d-flex flex-column min-vh-300">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <form class="mx-auto mt-5 mp-5" style="width: 400px;" action="" method="POST">
+                    <h1 class="text-center mb-5">Log In</h1>
+
+                    <!-- Username input -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="usernameInput" class="form-control" placeholder="Username" name="username" />
+                    </div>
+
+                    <!-- Password input -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="password" id="passwordInput" class="form-control" placeholder="Password" name="password" />
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="d-flex justify-content-center mb-4">
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary" >Log in</button>
+                    </div>
+
+                    <!-- Sign up buttons -->
+                    <div class="text-center">
+                        <p>Don't have an account? <a href="index.php?page=signup"> Sign Up </a></p>
+                    </div>
+
+                </form>
             </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div>
-                <input type="checkbox" id="remember" name="remember" <?php echo isset($_COOKIE['username']) ? 'checked' : ''; ?>>
-                <label for="remember">Remember Me</label>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="index.php?page=signup">Sign up here</a></p>
+        </div>
     </div>
 </body>

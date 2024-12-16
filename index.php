@@ -45,7 +45,7 @@
 
 <body>
     <?php include 'includes/header.php'; ?>
-
+    <?php include 'db/database.php';  ?>
     <main>
         <?php
         $file_path = "page/home.php";  // Default path
@@ -59,7 +59,6 @@
                     $file_path = "page/jadwal.php";
                     break;
                 case 'signup':
-                    include 'db/database.php';  
                     $file_path = "authentication/signUp.php";
                     break;
                 case 'login':
