@@ -24,4 +24,7 @@ jadwal. ui masi jelek pol.
 
 
 v0.1.16:
-masi kaya v0.1.15. bedanya di kode php bagian login sama sign up. lebih simple sama gampang dimengerti
+masi kaya v0.1.15. bedanya di kode php bagian login sama sign up. lebih simple sama gampang dimengerti.
+
+v0.1.17:
+masi kaya v0.1.15. bagian my account berantakan banget. bagian laporan harusnya udah bisa masuk ke database, tapi masi kehambat soalnya id usernya bingung diambil dari mana.

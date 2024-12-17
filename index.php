@@ -26,22 +26,29 @@
             echo '<link rel="stylesheet" href="css/login.css">';
             break;
         case 'profile':
-            // echo '<link rel="stylesheet" href="css/navbarMenuItems.css">';
-            echo '<link rel="stylesheet" href="css/navbarReport.css">';
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
             echo '<link rel="stylesheet" href="css/profile.css">';
             break;
         case 'reportTransport':
-            echo '<link rel="stylesheet" href="css/navbarReport.css">';
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
             echo '<link rel="stylesheet" href="css/report.css">';
             break;
         case 'reportLocation':
-            echo '<link rel="stylesheet" href="css/navbarReport.css">';
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
             echo '<link rel="stylesheet" href="css/report.css">';
             break;
-            // case 'navbarReport':
-            //     break;
-            // case 'navbarMenuItems':
-            //     break;
+        case 'historyAll':
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
+            echo '<link rel="stylesheet" href="css/historyAll.css">';
+            break;
+        case 'settings':
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
+            echo '<link rel="stylesheet" href="css/settings.css">';
+            break;
+        case 'customerService':
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
+            echo '<link rel="stylesheet" href="css/customerService.css">';
+            break;
 
         default:
             echo '<link rel="stylesheet" href="css/home.css">';
@@ -53,6 +60,7 @@
     <?php
     include 'includes/header.php';
     // include 'db/database.php';
+    require 'db/database.php';
     ?>
     <main>
         <?php
@@ -72,10 +80,6 @@
                 case 'login':
                     $file_path = "authentication/login.php";
                     break;
-                case 'profile':
-                    include 'includes/navbarMenuItems.php';
-                    $file_path = "page/profile.php";
-                    break;
                 case 'reportTransport':
                     include 'includes/navbarReport.php';
                     $file_path = "page/reportTransport.php";
@@ -83,6 +87,22 @@
                 case 'reportLocation':
                     include 'includes/navbarReport.php';
                     $file_path = "page/reportLocation.php";
+                    break;
+                case 'profile':
+                    include 'includes/navbarMenuItems.php';
+                    $file_path = "page/profile.php";
+                    break;
+                case 'historyAll':
+                    include 'includes/navbarMenuItems.php';
+                    $file_path = "page/historyAll.php";
+                    break;
+                case 'settings':
+                    include 'includes/navbarMenuItems.php';
+                    $file_path = "page/settings.php";
+                    break;
+                case 'customerService':
+                    include 'includes/navbarMenuItems.php';
+                    $file_path = "page/customerService.php";
                     break;
             }
         }

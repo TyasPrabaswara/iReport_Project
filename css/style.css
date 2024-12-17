@@ -1,6 +1,5 @@
 * {
-  margin: 0;
-  padding: 0;
+
   box-sizing: border-box;
 }
 
@@ -8,7 +7,8 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #f5f5f5;
-  padding-top: 0px; /* Added to ensure content below navbar is not covered */
+  /* margin-top: 10vh; */
+  padding-top: 5vh; /* Added to ensure content below navbar is not covered */
 }
 
 .navbar {

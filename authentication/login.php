@@ -3,18 +3,16 @@ $pageTitle = 'Login - iReport';
 //$additionalCSS = ['login.css'];
 session_start();
 
-require 'db/database.php';
+// require 'db/database.php';
 
 if (isset($_POST['login'])) {
 
   $username = $_POST['username'];
   $password = $_POST['password'];
-
   $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
 
   // cek username
   if (mysqli_num_rows($result) === 1) {
-
     // cek password
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password, $row['password'])) {
@@ -26,6 +24,16 @@ if (isset($_POST['login'])) {
     echo "<script> 
     alert('Username or password is incorrect!'); 
     </script>";
+  }
+
+  if(mysqli_num_rows($result)>0){
+    $row_akun = mysqli_fetch_array($result);
+    $_SESSION['id_user'] = $row_akun['id_user'];
+    $_SESSION['nama'] = $row_akun['nama'];
+    $_SESSION['username'] = $row_akun['username'];
+    $_SESSION['no_telp'] = $row_akun['no_telp'];
+    $_SESSION['email'] = $row_akun['email'];
+
   }
 }
 

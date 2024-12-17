@@ -60,7 +60,7 @@ $user_role = isset($_SESSION['role']) ? $_SESSION['role'] : 'guest';
             <div class="dropdown">
                 <button class="dropbtn">Menu</button>
                 <div class="dropdown-content">
-                    <a href="index.php?page=profile">Profile</a>
+                    <a href="index.php?page=profile">My Account</a>
                     <a href="#" onclick="confirmLogout()">Log Out</a>
                 </div>
             </div>

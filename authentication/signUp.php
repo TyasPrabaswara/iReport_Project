@@ -2,7 +2,7 @@
 $pageTitle = 'Sign Up - iReport';
 //$additionalCSS = ['signup.css', 'bootstrap.min.css'];
 
-require 'db/database.php';
+// require 'db/database.php';
 
 if (isset($_POST['regist'])) {
     if (regist($_POST) > 0) {

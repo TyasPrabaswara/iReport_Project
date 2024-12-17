@@ -7,22 +7,29 @@
  5. About Us
 -->
 
-<nav class="sidebar">
-    <ul class="sidebar-menu">
-        <li class="sidebar-item active">
-            <a href="#account">Account</a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#history">History</a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#settings">Settings</a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#customer-service">Customer Service</a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#about">About Us</a>
-        </li>
-    </ul>
-</nav>
+<?php
+// $current_page = basename(__FILE__);
+// // $additionalCSS = ['navbarReport.css'];
+?>
+<aside class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item <?php echo ($_GET['page'] == 'profile') ? 'active' : ''; ?>">
+                <a href="index.php?page=profile">Profile</a>
+            </li>
+            <li class="sidebar-item <?php echo ($_GET['page'] == 'historyAll') ? 'active' : ''; ?>">
+                <a href="index.php?page=historyAll">History</a>
+            </li>
+            <li class="sidebar-item <?php echo ($_GET['page'] == 'settings') ? 'active' : ''; ?>">
+                <a href="index.php?page=settings">Settings</a>
+            </li>
+            <li class="sidebar-item <?php echo ($_GET['page'] == 'customerService') ? 'active' : ''; ?>">
+                <a href="index.php?page=customerService">Customer Service</a>
+            </li>
+            <li class="sidebar-item <?php echo ($_GET['page'] == 'aboutUs') ? 'active' : ''; ?>">
+                <a href="index.php?page=aboutUs">About Us</a>
+            </li>
+        </ul>
+    </nav>
+
+</aside>

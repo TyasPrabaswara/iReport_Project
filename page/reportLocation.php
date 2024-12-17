@@ -5,6 +5,23 @@
 $pageTitle = 'Report Location - iReport';
 // $additionalCSS = ['reportTransport.css'];
 // include 'includes/navbarReport.php';
+
+if (isset($_POST['submit'])) {
+  if (addReportLoc($_POST) > 0) {
+    echo "<script>
+    alert('Report submitted successfully.');
+    document.location.href = 'index.php?page=home';
+    </script>";
+    // header("Location: index.php?page=home");
+    // exit();
+  } else {
+    echo "<script>
+    alert('Report submission failed.');
+    </script>";
+    header("Location: index.php?page=reportLocation");
+  }
+}
+
 ?>
 
 <main>
@@ -13,7 +30,7 @@ $pageTitle = 'Report Location - iReport';
     <main class="main-content">
       <h1>Report Your Problem</h1>
 
-      <form class="report-form" action="process_report.php" method="POST" enctype="multipart/form-data">
+      <form class="report-form" action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="jenis-keluhan">Jenis Keluhan</label>
           <select id="jenis-keluhan" name="jenis_keluhan" required>
@@ -28,9 +45,15 @@ $pageTitle = 'Report Location - iReport';
           <label for="lokasi">Lokasi</label>
           <select id="lokasi" name="lokasi" required>
             <option value="" disabled selected>Pilih lokasi</option>
-            <option value="stasiunA">Stasiun A</option>
-            <option value="stasiunB">Stasiun B</option>
-            <option value="terminalC">Terminal C</option>
+            <?php
+            // require 'db/database.php';
+            $result = mysqli_query($conn, "SELECT * FROM lokasi");
+            $option = '';
+            while ($row = mysqli_fetch_assoc($result)) {
+              $option .= '<option value="' . $row['id_lokasi'] . '">' . $row['nama_lokasi'] . '</option>';
+            }
+            echo $option;
+            ?>
           </select>
         </div>
 
@@ -46,7 +69,7 @@ $pageTitle = 'Report Location - iReport';
         <div class="form-group">
           <label for="tanggal">Tanggal Laporan</label>
           <input
-            type="text"
+            type="date"
             id="tanggal"
             name="tanggal"
             placeholder="DD/MM/YYYY"
@@ -68,7 +91,7 @@ $pageTitle = 'Report Location - iReport';
         </div>
 
         <div class="form-group">
-          <button type="submit" class="submit-btn">Submit Report</button>
+          <button type="submit" class="submit-btn" name="submit">Submit Report</button>
         </div>
       </form>
     </main>
