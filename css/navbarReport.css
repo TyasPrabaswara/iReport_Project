@@ -1,0 +1,43 @@
+.sidebar {
+    width: 250px; /* Set a width for the sidebar */
+    background-color: white; /* Change background color to white */
+    color: black; /* Change text color to black for better contrast */
+    padding: 15px; /* Padding around the content */
+    position: fixed; /* Fixed position */
+    height: 100%; /* Full height */
+    border-radius: 4px; /* Rounded edges */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    z-index: 1000; /* Ensure it sits above other content */
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+}
+
+.sidebar-menu {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+.sidebar-item {
+    margin: 10px 0; /* Space between items */
+}
+
+.sidebar-item a {
+    color: black; /* Link color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px; /* Padding for links */
+    display: block; /* Make the link fill the item */
+}
+
+.sidebar-item.active a {
+    background-color: #555; /* Background for active item */
+}
+
+.main-content {
+    margin-left: 270px; /* Add margin to the left to accommodate the sidebar */
+    padding: 20px; /* Add padding for better spacing */
+}
