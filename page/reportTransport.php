@@ -3,9 +3,7 @@
 
 <?php
 $pageTitle = 'Report Transport - iReport';
-// $additionalCSS = ['reportTransport.css'];
-// include 'includes/navbarReport.php';
-// include 'includes/header.php';
+
 
 if (isset($_POST['submit'])) {
   if (addReportTrans($_POST) > 0) {
@@ -94,4 +92,4 @@ if (isset($_POST['submit'])) {
   </div>
 
 </main>
-<script src="../js/reportTransport.js"></script>
+<script src="/js/reportTransport.js"></script>

@@ -87,6 +87,7 @@
     display: none; /* Hide by default */
     font-size: 24px; /* Adjust size as needed */
     cursor: pointer;
+    color: white;
 }
 
 /* Show hamburger on mobile */

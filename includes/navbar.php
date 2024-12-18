@@ -7,7 +7,7 @@ isinya button
 
 <?php
 //start session
-session_start();
+//session_start();
 
 //TEST PURPOSES ONLY, REMOVE WHEN PRODUCT IS FINISHED
 //Uncomment one of the following lines to test different roles

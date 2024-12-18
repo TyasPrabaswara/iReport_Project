@@ -32,47 +32,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Form validation Transport
+    // Form validation and submission
     const formTransport = document.querySelector('.report-form');
     if (formTransport) {
         formTransport.addEventListener('submit', function (e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default form submission
 
+            // Gather form data
             const jenisKeluhan = document.getElementById('jenis-keluhan').value;
             const nomorKendaraan = document.getElementById('nomor-kendaraan').value;
             const deskripsi = document.getElementById('deskripsi').value;
             const tanggal = document.getElementById('tanggal').value;
 
+            // Validate required fields
             if (!jenisKeluhan || !nomorKendaraan || !deskripsi || !tanggal) {
                 alert('Mohon lengkapi semua field yang diperlukan');
                 return;
             }
 
-            this.submit();
-        });
-    }
-    // Form validation Location
-    const formLocation = document.querySelector('.report-form');
-    if (formLocation) {
-        formLocation.addEventListener('submit', function (e) {
-            e.preventDefault();
+            // Create a FormData object to send the form data
+            const formData = new FormData(formTransport);
+            formData.append('submit', true); // Append submit flag
 
-            const jenisKeluhan = document.getElementById('jenis-keluhan').value;
-            const nomorKendaraan = document.getElementById('lokasi').value;
-            const deskripsi = document.getElementById('deskripsi').value;
-            const tanggal = document.getElementById('tanggal').value;
-
-            if (!jenisKeluhan || !nomorKendaraan || !deskripsi || !tanggal) {
-                alert('Mohon lengkapi semua field yang diperlukan');
-                return;
-            }
-
-            this.submit();
+            // Send the form data using fetch
+            fetch('reportFunctions.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Handle the response from the server
+                if (data.includes('success')) {
+                    alert('Report submitted successfully.');
+                    document.location.href = 'index.php?page=home'; // Redirect on success
+                } else {
+                    alert('Report submission failed: ' + data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the report.');
+            });
         });
     }
 });
-
-
 
 // Function to remove photo
 function removePhoto() {

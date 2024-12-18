@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +11,15 @@
     <title>iReport</title>
     <link rel="stylesheet" href="css/style.css">
     <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    include 'db/database.php';
+    error_log("Database Included");
+
+    include 'db/userFunctions.php';
+    include 'db/reportFunctions.php';
+
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
     switch ($page) {
@@ -59,13 +72,11 @@
 <body>
     <?php
     include 'includes/header.php';
-    // include 'db/database.php';
-    require 'db/database.php';
+    //include 'db/database.php';
     ?>
     <main>
         <?php
         $file_path = "page/home.php";  // Default path
-
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
                 case 'berita':

@@ -1,6 +1,5 @@
 <!-- include navbarReports -->
 
-
 <?php
 $pageTitle = 'Report Location - iReport';
 // $additionalCSS = ['reportTransport.css'];
@@ -12,8 +11,6 @@ if (isset($_POST['submit'])) {
     alert('Report submitted successfully.');
     document.location.href = 'index.php?page=home';
     </script>";
-    // header("Location: index.php?page=home");
-    // exit();
   } else {
     echo "<script>
     alert('Report submission failed.');

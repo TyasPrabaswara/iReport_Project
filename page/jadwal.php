@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Jadwal - iReport';
-$additionalCSS = ['jadwal.css'];
+// $additionalCSS = ['jadwal.css'];
 ?>
 
 <main>
