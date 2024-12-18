@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault(); // Prevent default form submission
 
             // Gather form data
-            const jenisKeluhan = document.getElementById('jenis-keluhan').value;
-            const nomorKendaraan = document.getElementById('nomor-kendaraan').value;
-            const deskripsi = document.getElementById('deskripsi').value;
-            const tanggal = document.getElementById('tanggal').value;
+            const complaintType = document.getElementById('jenis-keluhan').value; // Complaint type
+            const vehiclePlate = document.getElementById('nomor-kendaraan').value; // Vehicle plate number
+            const description = document.getElementById('deskripsi').value; // Description
+            const reportDate = document.getElementById('tanggal').value; // Date of the report
 
             // Validate required fields
-            if (!jenisKeluhan || !nomorKendaraan || !deskripsi || !tanggal) {
+            if (!complaintType || !vehiclePlate || !description || !reportDate) {
                 alert('Mohon lengkapi semua field yang diperlukan');
                 return;
             }
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert('Report submitted successfully.');
                     document.location.href = 'index.php?page=home'; // Redirect on success
                 } else {
-                    alert('Report submission failed: ' + data);
+                    alert('Report submission failed: ' + data); // Show error message
                 }
             })
             .catch(error => {

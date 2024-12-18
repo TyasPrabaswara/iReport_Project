@@ -4,20 +4,11 @@
 <?php
 $pageTitle = 'Report Transport - iReport';
 
-
 if (isset($_POST['submit'])) {
   if (addReportTrans($_POST) > 0) {
-    echo "<script>
-    alert('Report submitted successfully.');
-    document.location.href = 'index.php?page=home';
-    </script>";
-    // header("Location: index.php?page=home");
-    // exit();
+    echo "success";
   } else {
-    echo "<script>
-    alert('Report submission failed.');
-    </script>";
-    header("Location: index.php?page=reportTransport");
+    echo "Error: " . mysqli_error($conn);
   }
 }
 ?>
@@ -92,4 +83,4 @@ if (isset($_POST['submit'])) {
   </div>
 
 </main>
-<script src="/js/reportTransport.js"></script>
+<!-- <script src="js/reportTransport.js"></script> -->

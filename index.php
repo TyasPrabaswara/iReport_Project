@@ -18,7 +18,7 @@
     error_log("Database Included");
 
     include 'db/userFunctions.php';
-    include 'db/reportFunctions.php';
+    include_once 'db/reportFunctions.php';
 
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 

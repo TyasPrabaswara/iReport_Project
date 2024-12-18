@@ -28,3 +28,6 @@ masi kaya v0.1.15. bedanya di kode php bagian login sama sign up. lebih simple s
 
 v0.1.17:
 masi kaya v0.1.15. bagian my account berantakan banget. bagian laporan harusnya udah bisa masuk ke database, tapi masi kehambat soalnya id usernya bingung diambil dari mana.
+
+v0.1.19:
+- stupid report function doesnt work
