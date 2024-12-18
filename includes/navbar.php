@@ -40,31 +40,39 @@ $user_role = isset($_SESSION['role']) ? $_SESSION['role'] : 'guest';
 </head>
 
 <nav class="navbar">
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
         <a href="index.php?page=home" class="<?php echo $current_page == 'home' ? 'active' : ''; ?>">Home</a>
         <a href="index.php?page=berita" class="<?php echo $current_page == 'berita' ? 'active' : ''; ?>">Berita</a>
         <a href="index.php?page=jadwal" class="<?php echo $current_page == 'jadwal' ? 'active' : ''; ?>">Jadwal</a>
     </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
     <?php if ($user_role === 'admin'): ?>
         <!-- dropdown for admin users -->
         <div class="dropdown">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
-                    <a href="index.php?page=profile">Profile</a>
-                    <a href="index.php?page=dashboard">Dashboard</a>
-                    <a href="#" onclick="confirmLogout()">Log Out</a>
-                </div>
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="index.php?page=profile">Profile</a>
+                <a href="index.php?page=dashboard">Dashboard</a>
+                <a href="#" onclick="confirmLogout()">Log Out</a>
             </div>
+        </div>
     <?php elseif ($user_role === 'user'): ?>
-            <!-- dropdown for logged in users -->
-            <div class="dropdown">
-                <button class="dropbtn">Menu</button>
-                <div class="dropdown-content">
-                    <a href="index.php?page=profile">My Account</a>
-                    <a href="#" onclick="confirmLogout()">Log Out</a>
-                </div>
+        <!-- dropdown for logged in users -->
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="index.php?page=profile">My Account</a>
+                <a href="#" onclick="confirmLogout()">Log Out</a>
             </div>
+        </div>
     <?php else: ?>
         <a href="index.php?page=signup" class="sign-up-btn" style="text-decoration: none;">SIGN UP</a>
     <?php endif; ?>
 </nav>
+
+<script>
+function toggleMenu(){
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('active');
+}
+</script>

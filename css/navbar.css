@@ -39,3 +39,76 @@
     background-color: #f1f1f1;
     border-radius: 4px;
 }
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: auto;
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+@media (max-width: 768px){
+    .nav-links{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none; /* Hide by default */
+    font-size: 24px; /* Adjust size as needed */
+    cursor: pointer;
+}
+
+/* Show hamburger on mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Show hamburger icon */
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links by default */
+        flex-direction: column; /* Stack links vertically */
+        width: 100%; /* Full width */
+        background-color: rgba(0, 0, 0, 0.8); /* Background color */
+        position: absolute; /* Position it below the navbar */
+        top: 60px; /* Adjust based on navbar height */
+        left: 0;
+    }
+    
+    .nav-links a {
+        padding: 8px 10px;
+    }
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+}

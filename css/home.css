@@ -200,6 +200,21 @@ p {
     margin-right: 1rem;
     font-size: 0.9rem;
   }
+
+  .features-container {
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -226,4 +241,10 @@ p {
   .container {
     grid-template-columns: 1fr;
   }
+
+  .features-container{
+    grid-template-columns: 1fr !important;
+
+  }
+  
 }
