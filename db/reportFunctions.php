@@ -3,19 +3,21 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-/* //THIS IS FOR TEST ONLY
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+/* //THIS IS FOR TEST ONLY
 if(!isset($_SESSION['id_penumpang'])) {
     die("User ID is not set in the session");
 }
-*/
+
 
 $user_id = $_SESSION['id_penumpang'] ?? null;
 if(!$user_id){
     die("User Id is not set in the session");
 }
+*/
 //var_dump($_SESSION);
 
 // Include the database connection using a relative path
