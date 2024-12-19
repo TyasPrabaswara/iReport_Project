@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
     $row = mysqli_fetch_assoc($result);
     if (password_verify($password, $row['password'])) {
       $_SESSION['role'] = $row['user_role'];
-      $_SESSION['id_penumpang'] = $user['id_penumpang'];
+      $_SESSION['id_penumpang'] = $row['id_penumpang'];
       header("Location: index.php?page=home");
       exit;
     }

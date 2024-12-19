@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iReport</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
@@ -115,6 +116,9 @@
                     include 'includes/navbarMenuItems.php';
                     $file_path = "page/customerService.php";
                     break;
+                case 'checkUserAndVehicle':
+                    $file_path = "page/checkUserAndVehicle.php";
+                    break;
             }
         }
 
@@ -125,7 +129,8 @@
         }
         ?>
     </main>
-
+    <script src="js/reportTransport.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <?php include 'includes/footer.php'; ?>
 </body>
 

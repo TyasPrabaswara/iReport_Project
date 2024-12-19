@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Gather form data
             const complaintType = document.getElementById('jenis-keluhan').value; // Complaint type
-            const vehiclePlate = document.getElementById('nomor-kendaraan').value; // Vehicle plate number
+            const vehiclePlate = document.getElementById('no_kendaraan').value; // Vehicle plate number
             const description = document.getElementById('deskripsi').value; // Description
             const reportDate = document.getElementById('tanggal').value; // Date of the report
 
@@ -52,18 +52,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Create a FormData object to send the form data
             const formData = new FormData(formTransport);
+            console.log("Form data being sent: ", Array.from(formData.entries()));
             formData.append('submit', true); // Append submit flag
 
+            
             // Send the form data using fetch
-            fetch('reportFunctions.php', {
+            fetch('db/reportFunctions.php', {
                 method: 'POST',
                 body: formData
             })
             .then(response => response.text())
             .then(data => {
-                // Handle the response from the server
+                console.log(data); // Log the response data for debugging
                 if (data.includes('success')) {
-                    alert('Report submitted successfully.');
+                    alert('Report submitted successfully.'); // Alert for successful submission
                     document.location.href = 'index.php?page=home'; // Redirect on success
                 } else {
                     alert('Report submission failed: ' + data); // Show error message
@@ -85,3 +87,32 @@ function removePhoto() {
     photoInput.value = '';
     photoPreview.innerHTML = '';
 }
+
+function submitReport(){
+    const formData = new FormData();
+    const mediaFile = document.getElementById('media').files[0];
+    const description = document.getElementById('description').value;
+
+    formData.append('media', mediaFile);
+    formData.append('description', description);
+
+    fetch('reportFunctions.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Response:', data);
+        if (data.includes('has been uploaded')) {
+            alert('Report submitted successfully!');
+        } else {
+            alert('Failed to submit report: ' + data);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the report.');
+    });
+}
+
+document.getElementById('submitReportButton').addEventListener('click', submitReport);

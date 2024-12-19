@@ -32,11 +32,11 @@ if (isset($_POST['submit'])) {
           </div>
 
           <div class="form-group">
-            <label for="nomor-kendaraan">Nomor Kendaraan</label>
+            <label for="no_kendaraan">Nomor Kendaraan</label>
             <input
               type="text"
-              id="nomor-kendaraan"
-              name="nomor_kendaraan"
+              id="no_kendaraan"
+              name="no_kendaraan"
               placeholder="Masukkan nomor kendaraan (plat)"
               required>
           </div>
