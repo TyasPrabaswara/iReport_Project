@@ -5,7 +5,7 @@
 require 'db/database.php'; // Adjust the path as necessary
 
 // Start the session to access session variables
-session_start();
+//session_start();
 
 // Initialize variables
 $userId = isset($_SESSION['id_penumpang']) ? $_SESSION['id_penumpang'] : null;

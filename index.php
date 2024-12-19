@@ -130,6 +130,7 @@
         ?>
     </main>
     <script src="js/reportTransport.js"></script>
+    <script src="js/reportLocation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <?php include 'includes/footer.php'; ?>
 </body>

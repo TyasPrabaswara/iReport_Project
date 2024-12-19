@@ -95,4 +95,4 @@ if (isset($_POST['submit'])) {
   </div>
 
 </main>
-<script src="../js/reportLocation.js"></script>
+<script src="../js/report.js"></script>

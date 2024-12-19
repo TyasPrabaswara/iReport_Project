@@ -34,3 +34,7 @@ v0.1.19:
 
 v0.1.21:
 user id is not set in the session
+
+v0.1.22:
+- submit function for transport finally works
+- submit function for location still need fixing in the js or form
