@@ -8,23 +8,74 @@ require __DIR__ . '/database.php'; // Adjust the path as necessary
 
 // Function to handle file uploads
 function upload() {
-    // Check if a file was uploaded
-    if (isset($_FILES['media']) && $_FILES['media']['error'] == UPLOAD_ERR_OK) {
-        $uploadDir = __DIR__ . '/../uploads/'; // Directory to save uploaded files
-        $uploadFile = $uploadDir . basename($_FILES['media']['name']);
+    $namaFile = $_FILES['photo']['name'];
+    $ukuranFile = $_FILES['photo']['size'];
+    $error = $_FILES['photo']['error'];
+    $tmpName = $_FILES['photo']['tmp_name'];
+    // echo "<script>alert('masuk bos');</script>";
 
+    // Check if a file was uploaded
+    if ($error !== UPLOAD_ERR_OK) {
+        echo "<script>alert('Terjadi kesalahan saat mengupload file');</script>";
+        return false;
+    } 
+    // else {
+    //     echo "masuk bos";
+    // }
+
+    // Check if the uploaded file is an image
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script>alert('Yang anda upload bukan gambar');</script>";
+        return false;
+    } 
+    // else {
+    //     echo " || masuk lagi bos";
+    // }
+
+    // Check if the uploaded file is within the size limit
+    if ($ukuranFile > 1000000) {
+        echo "<script>alert('Ukuran gambar terlalu besar');</script>";
+        return false;
+    } else {
+    }
+    
+    
+    // Generate a unique name for the uploaded file
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiGambar;
+    // echo " || masuk lagi bos";
+
+    // move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+
+    // return $namaFileBaru;
+    
+    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == UPLOAD_ERR_OK) {
+        $uploadDir = __DIR__ . '/../uploads/'; // Directory to save uploaded files
+
+        // Create the uploads directory if it doesn't exist
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+        $uploadFile = $uploadDir . basename($_FILES['photo']['name']);
+        
         // Move the uploaded file to the desired directory
-        if (move_uploaded_file($_FILES['media']['tmp_name'], $uploadFile)) {
+        if (move_uploaded_file($tmpName, $uploadFile)) {
             return $uploadFile; // Return the path to the uploaded file
         } else {
             error_log("Failed to move uploaded file."); // Log the error
             return false; // Return false if the file could not be moved
         }
-    } else {
-        // Log the specific upload error
-        error_log("File upload error: " . (isset($_FILES['media']) ? $_FILES['media']['error'] : 'No file uploaded'));
-        return false; // Return false if no file was uploaded or there was an error
     }
+    // // Check if a file was uploaded
+    // } else {
+    //     // Log the specific upload error
+    //     error_log("File upload error: " . (isset($_FILES['media']) ? $_FILES['media']['error'] : 'No file uploaded'));
+    //     return false; // Return false if no file was uploaded or there was an error
+    // }
 }
 
 // Function to add a report
@@ -45,7 +96,8 @@ function addReportTrans($data) {
     // Handle file upload
     $media = upload(); // Call the upload function
     if (!$media) {
-        return "Failed to upload media."; // Return error message if upload fails
+
+        return ; // Return error message if upload fails
     }
 
     // Check if the vehicle exists in the transportasi table

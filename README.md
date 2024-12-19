@@ -31,3 +31,6 @@ masi kaya v0.1.15. bagian my account berantakan banget. bagian laporan harusnya 
 
 v0.1.19:
 - stupid report function doesnt work
+
+v0.1.21:
+user id is not set in the session
