@@ -94,10 +94,12 @@
                     break;
                 case 'reportTransport':
                     include 'includes/navbarReport.php';
+                    //include 'js/reportTransport.js';
                     $file_path = "page/reportTransport.php";
                     break;
                 case 'reportLocation':
                     include 'includes/navbarReport.php';
+                    //include 'js/reportLocation.js';
                     $file_path = "page/reportLocation.php";
                     break;
                 case 'profile':
@@ -129,8 +131,8 @@
         }
         ?>
     </main>
-    <script src="js/reportTransport.js"></script>
-    <script src="js/reportLocation.js"></script>
+    <!-- <script src="js/reportTransport.js"></script>
+    <script src="js/reportLocation.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <?php include 'includes/footer.php'; ?>
 </body>
