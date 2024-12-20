@@ -2,11 +2,12 @@
 // Enable error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+error_log("reportFunctions.php called 3");
+
 
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
 /* //THIS IS FOR TEST ONLY
 if(!isset($_SESSION['id_penumpang'])) {
     die("User ID is not set in the session");
@@ -17,11 +18,35 @@ $user_id = $_SESSION['id_penumpang'] ?? null;
 if(!$user_id){
     die("User Id is not set in the session");
 }
-*/
+    */
 //var_dump($_SESSION);
 
 // Include the database connection using a relative path
 require __DIR__ . '/database.php'; // Adjust the path as necessary
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    error_log("Form Ssubmitted.");
+    error_log("POST Data: " . print_r($_POST, true));
+    if(isset($_POST['form_id'])){
+        error_log("Form ID: ". $_POST['form_id']);
+        switch ($_POST['form_id']){
+            case 'form1':
+                error_log("Calling addReportTrans");
+                echo addReportTrans($_POST);
+                break;
+            case 'form2':
+                error_log("Calling addReportLoc");
+                echo addReportLoc($_POST);
+                break;
+            default:
+                echo "Unknown form submitted.";
+        }
+    } else {
+        echo "No form identiufier provided.";
+    }
+}
 
 // Function to handle file uploads
 function upload() {
@@ -87,12 +112,6 @@ function upload() {
             return false; // Return false if the file could not be moved
         }
     }
-    // // Check if a file was uploaded
-    // } else {
-    //     // Log the specific upload error
-    //     error_log("File upload error: " . (isset($_FILES['media']) ? $_FILES['media']['error'] : 'No file uploaded'));
-    //     return false; // Return false if no file was uploaded or there was an error
-    // }
 }
 
 // Function to add a report
@@ -101,7 +120,7 @@ function addReportTrans($data) {
 
     // Check if required keys exist in the POST data
     if (!isset($data['jenis_keluhan'], $data['no_kendaraan'], $data['deskripsi'], $data['tanggal'])) {
-        return "Required fields are missing.";
+        return "Required fields are missing balls.";
     }
 
     // Extract data from the input array
@@ -157,6 +176,7 @@ function addReportLoc($data) {
         return "Required fields are missing.";
     }
 
+
     // Extract data from the input array
     $complaintType = $data['jenis_keluhan'];
     $locationId = $data['id_lokasi']; // Use id_lokasi instead of id_transportasi
@@ -197,9 +217,4 @@ function addReportLoc($data) {
         return "Database error: " . mysqli_error($conn); // Return detailed error message
     }
 }
-
-// Check if the request method is POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $response = addReportTrans($_POST); // Call the function with the POST data
-    echo $response; // Echo the response to send it back to the client
-}
+?>

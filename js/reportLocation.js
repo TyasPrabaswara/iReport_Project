@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault(); // Prevent default form submission
 
             // Gather form data
-            const complaintType = document.getElementById('jenis-keluhan').value; // Complaint type
+            const complaintType = document.getElementById('jenis_keluhan').value; // Complaint type
             const location = document.getElementById('lokasi').value; // Location
             const description = document.getElementById('deskripsi').value; // Description
             const reportDate = document.getElementById('tanggal').value; // Date of the report
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('submit', true); // Append submit flag
 
             // Send the form data using fetch
-            fetch('db/reportFunctions.php', {
+            fetch('reportFunctions.php', {
                 method: 'POST',
                 body: formData
             })
@@ -86,3 +86,33 @@ function removePhoto() {
     photoInput.value = '';
     photoPreview.innerHTML = '';
 }
+
+function submitReportLoc(){
+    const formData = new FormData();
+    const mediaFile = document.getElementById('media').files[0];
+    const description = document.getElementById('description').value;
+
+    formData.append('media', mediaFile);
+    formData.append('description', description);
+
+    fetch('reportFunctions.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Response:', data);
+        if (data.includes('has been uploaded')) {
+            alert('Report submitted successfully!');
+        } else {
+            alert('Failed to submit report: ' + data);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while submitting the report.');
+    });
+
+    document.getElementById('submitReportButton').addEventListener('click', submitReportLoc);
+}
+

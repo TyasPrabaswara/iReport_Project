@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
             // Send the form data using fetch
-            fetch('db/reportFunctions.php', {
+            fetch('reportFunctions.php', {
                 method: 'POST',
                 body: formData
             })

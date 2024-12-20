@@ -3,8 +3,9 @@
 <?php
 $pageTitle = 'Report Location - iReport';
 // $additionalCSS = ['reportTransport.css'];
-// include 'includes/navbarReport.php';
+//require __DIR__ . 'reportFunctionLoc.php';
 
+/*
 if (isset($_POST['submit'])) {
   if (addReportLoc($_POST) > 0) {
     echo "<script>
@@ -18,7 +19,7 @@ if (isset($_POST['submit'])) {
     header("Location: index.php?page=reportLocation");
   }
 }
-
+*/
 ?>
 
 <main>
@@ -27,10 +28,11 @@ if (isset($_POST['submit'])) {
     <main class="main-content">
       <h1>Report Your Problem</h1>
 
-      <form class="report-form" action="" method="POST" enctype="multipart/form-data">
+      <form class="report-form" action="db/reportFunctions.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="form_id" value="form2">
         <div class="form-group">
-          <label for="jenis-keluhan">Jenis Keluhan</label>
-          <select id="jenis-keluhan" name="jenis_keluhan" required>
+          <label for="jenis_keluhan">Jenis Keluhan</label>
+          <select id="jenis_keluhan" name="jenis_keluhan" required>
             <option value="" disabled selected>Pilih jenis keluhan</option>
             <option value="kerusakan">Kerusakan</option>
             <option value="kebersihan">Kebersihan</option>
@@ -88,7 +90,7 @@ if (isset($_POST['submit'])) {
         </div>
 
         <div class="form-group">
-          <button type="submit" class="submit-btn" name="submit">Submit Report</button>
+          <button id="submitReportButton" type="submit" class="submit-btn" name="submit">Submit Report</button>
         </div>
       </form>
     </main>

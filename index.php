@@ -20,6 +20,7 @@
 
     include 'db/userFunctions.php';
     include_once 'db/reportFunctions.php';
+    //include_once 'db/reportFunctionLoc.php';
 
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -95,11 +96,13 @@
                 case 'reportTransport':
                     include 'includes/navbarReport.php';
                     //include 'js/reportTransport.js';
+                    //include 'db/reportFunctionLoc.php';
                     $file_path = "page/reportTransport.php";
                     break;
                 case 'reportLocation':
                     include 'includes/navbarReport.php';
                     //include 'js/reportLocation.js';
+                    //include 'db/reportFunctions.php';
                     $file_path = "page/reportLocation.php";
                     break;
                 case 'profile':

@@ -3,7 +3,7 @@
 
 <?php
 $pageTitle = 'Report Transport - iReport';
-
+/*
 if (isset($_POST['submit'])) {
   if (addReportTrans($_POST) > 0) {
     echo "success";
@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
     echo "Error: " . mysqli_error($conn);
   }
 }
+*/
 ?>
 
 <main>
@@ -19,7 +20,8 @@ if (isset($_POST['submit'])) {
     <main class="main-content">
       <h1>Report Your Problem</h1>
 
-      <form class="report-form" action="" method="POST" enctype="multipart/form-data">
+      <form class="report-form" action="db/reportFunctions.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="form_id" value="form1">
         <div class="isi-form">
           <div class="form-group">
             <label for="jenis-keluhan">Jenis Keluhan</label>
