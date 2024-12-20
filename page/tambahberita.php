@@ -60,8 +60,8 @@ if (isset($_POST['tambahberita'])) {
                 </div>
                 <section id="schedule-section">
                     <div class="card shadow-sm">
-                        <div class="card-header bg-info text-white">
-                            <h3 class="mb-0">Tambah Jadwal</h3>
+                        <div class="card-header bg-warning text-white">
+                            <h3 class="mb-0">Tambah Berita</h3>
                         </div>
                         <div class="card-body">
                             <form action="../page/tambahberita.php" method="post">
