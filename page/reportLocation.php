@@ -5,7 +5,7 @@ $pageTitle = 'Report Location - iReport';
 // $additionalCSS = ['reportTransport.css'];
 //require __DIR__ . 'reportFunctionLoc.php';
 
-/*
+
 if (isset($_POST['submit'])) {
   if (addReportLoc($_POST) > 0) {
     echo "<script>
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     header("Location: index.php?page=reportLocation");
   }
 }
-*/
+
 ?>
 
 <main>

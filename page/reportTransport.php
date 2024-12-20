@@ -3,7 +3,7 @@
 
 <?php
 $pageTitle = 'Report Transport - iReport';
-/*
+
 if (isset($_POST['submit'])) {
   if (addReportTrans($_POST) > 0) {
     echo "success";
@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     echo "Error: " . mysqli_error($conn);
   }
 }
-*/
+
 ?>
 
 <main>
