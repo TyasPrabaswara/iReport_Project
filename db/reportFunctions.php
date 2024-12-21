@@ -8,18 +8,13 @@ error_log("reportFunctions.php called 3");
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-/* //THIS IS FOR TEST ONLY
-if(!isset($_SESSION['id_penumpang'])) {
-    die("User ID is not set in the session");
+
+if (isset($_SERVER['HTTP_REFERER'])) {
+    error_log("Referer: " . $_SERVER['HTTP_REFERER']);
+} else {
+    error_log("Referer header not set.");
 }
 
-
-$user_id = $_SESSION['id_penumpang'] ?? null;
-if(!$user_id){
-    die("User Id is not set in the session");
-}
-    */
-//var_dump($_SESSION);
 
 // Include the database connection using a relative path
 require __DIR__ . '/database.php'; // Adjust the path as necessary
@@ -27,26 +22,44 @@ require __DIR__ . '/database.php'; // Adjust the path as necessary
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    error_log("Form Ssubmitted.");
+    error_log("Form Submitted.");
     error_log("POST Data: " . print_r($_POST, true));
-    if(isset($_POST['form_id'])){
-        error_log("Form ID: ". $_POST['form_id']);
-        switch ($_POST['form_id']){
+    if (isset($_POST['form_id'])) {
+        error_log("Form ID: " . $_POST['form_id']);
+        $result = '';
+        switch ($_POST['form_id']) {
             case 'form1':
                 error_log("Calling addReportTrans");
-                echo addReportTrans($_POST);
+                $result = addReportTrans($_POST);
                 break;
             case 'form2':
                 error_log("Calling addReportLoc");
-                echo addReportLoc($_POST);
+                $result = addReportLoc($_POST);
                 break;
             default:
-                echo "Unknown form submitted.";
+                $result = "Unknown form submitted.";
+        }
+
+        // Handle the result
+        if ($result === "success") {
+            echo "<script>
+            alert('Report submitted successfully.');
+            window.location.href = '/iReport_Project/index.php?page=home';
+            </script>";
+        } else {
+            echo "<script>
+            alert('Error: $result');
+            window.location.href = '/iReport_Project/index.php?page=reportLocation';
+            </script>";
         }
     } else {
-        echo "No form identiufier provided.";
+        echo "<script>
+        alert('No form identifier provided.');
+        window.location.href = '/iReport_Project/index.php?page=reportLocation';
+        </script>";
     }
 }
+
 
 // Function to handle file uploads
 function upload() {
@@ -171,15 +184,37 @@ function addReportTrans($data) {
 function addReportLoc($data) {
     global $conn;
 
-    // Check if required keys exist in the POST data
-    if (!isset($data['jenis_keluhan'], $data['id_lokasi'], $data['deskripsi'], $data['tanggal'])) {
-        return "Required fields are missing.";
+    error_log("Full POST Data: " . print_r($_POST, true));  // Log the entire POST array
+
+    error_log("POST Data: " . print_r($data, true));
+    if (!isset($data['jenis_keluhan'])) {
+        error_log("jenis_keluhan is missing.");
     }
+    if (!isset($data['lokasi'])) {
+        error_log("lokasi is missing.");
+    }
+    if (!isset($data['deskripsi'])) {
+        error_log("deskripsi is missing.");
+    }
+    if (!isset($data['tanggal'])) {
+        error_log("tanggal is missing.");
+    }
+    
+    if (!array_key_exists('lokasi', $data)) {
+        error_log("lokasi key is missing in POST data.");
+        return "Required fields are missing loc.";
+    }
+    
+    
 
-
+    // Check if required keys exist in the POST data
+    if (!isset($data['jenis_keluhan'], $data['lokasi'], $data['deskripsi'], $data['tanggal'])) {
+        return "Required fields are missing loc.";
+    }
+    
     // Extract data from the input array
     $complaintType = $data['jenis_keluhan'];
-    $locationId = $data['id_lokasi']; // Use id_lokasi instead of id_transportasi
+    $locationId = $data['lokasi']; // Use id_lokasi instead of id_transportasi
     $description = $data['deskripsi'];
     $reportDate = $data['tanggal'];
 
@@ -199,6 +234,17 @@ function addReportLoc($data) {
     if (!$media) {
         return "File upload failed."; // Return error message if upload fails
     }
+
+    $query = "SELECT id_lokasi FROM lokasi WHERE id_lokasi = '$locationId'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $locationId = $row['id_lokasi'];
+    } else {
+        return "Location with ID $locationId does not exist."; // Return error message
+    }
+
 
     // Ensure the session is started and retrieve the user ID
     if (isset($_SESSION['id_penumpang'])) {

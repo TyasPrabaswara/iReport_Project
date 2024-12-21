@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Initialize date picker
     flatpickr("#tanggal", {
         dateFormat: "d/m/Y",

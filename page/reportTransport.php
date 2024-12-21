@@ -4,19 +4,25 @@
 <?php
 $pageTitle = 'Report Transport - iReport';
 
-if (isset($_POST['submit'])) {
+
+if (isset($_POST['submitReportButton'])) {
   if (addReportLoc($_POST) > 0) {
+    header("Location: index.php?page=home");
     echo "<script>
     alert('Report submitted successfully.');
-    document.location.href = 'index.php?page=home';
+    window.location.href = 'index.php?page=home';
     </script>";
+    exit; // Prevent further execution
   } else {
+    header("Location: index.php?page=reportLocation");
     echo "<script>
     alert('Report submission failed.');
+    window.location.href = 'index.php?page=reportLocation';
     </script>";
-    header("Location: index.php?page=reportLocation");
+    exit; // Prevent further execution
   }
 }
+
 
 
 ?>
