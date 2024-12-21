@@ -5,12 +5,19 @@
 $pageTitle = 'Report Transport - iReport';
 
 if (isset($_POST['submit'])) {
-  if (addReportTrans($_POST) > 0) {
-    echo "success";
+  if (addReportLoc($_POST) > 0) {
+    echo "<script>
+    alert('Report submitted successfully.');
+    document.location.href = 'index.php?page=home';
+    </script>";
   } else {
-    echo "Error: " . mysqli_error($conn);
+    echo "<script>
+    alert('Report submission failed.');
+    </script>";
+    header("Location: index.php?page=reportLocation");
   }
 }
+
 
 ?>
 
@@ -20,7 +27,7 @@ if (isset($_POST['submit'])) {
     <main class="main-content">
       <h1>Report Your Problem</h1>
 
-      <form class="report-form" action="db/reportFunctions.php" method="POST" enctype="multipart/form-data">
+      <form class="report-form" action="./db/reportFunctions.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="form_id" value="form1">
         <div class="isi-form">
           <div class="form-group">
@@ -78,7 +85,7 @@ if (isset($_POST['submit'])) {
         </div>
 
         <div class="form-group">
-          <button type="submit" class="submit-btn">Submit Report</button>
+          <button id="submitReportButton" type="submit" class="submit-btn">Submit Report</button>
         </div>
       </form>
     </main>

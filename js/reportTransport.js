@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Form validation and submission
     const formTransport = document.querySelector('.report-form');
     if (formTransport) {
-        formTransport.addEventListener('submit', function (e) {
+        formTransport.addEventListener('submitReportButton', function (e) {
             e.preventDefault(); // Prevent default form submission
 
             // Gather form data
@@ -113,6 +113,6 @@ function submitReport(){
         console.error('Error:', error);
         alert('An error occurred while submitting the report.');
     });
+    document.getElementById('submitReportButton').addEventListener('click', submitReport);
 }
 
-document.getElementById('submitReportButton').addEventListener('click', submitReport);

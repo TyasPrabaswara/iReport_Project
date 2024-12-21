@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Form validation and submission
     const formLocation = document.querySelector('.report-form');
     if (formLocation) {
-        formLocation.addEventListener('submit', function (e) {
+        formLocation.addEventListener('submitReportButton', function (e) {
             e.preventDefault(); // Prevent default form submission
 
             // Gather form data
-            const complaintType = document.getElementById('jenis_keluhan').value; // Complaint type
+            const complaintType = document.getElementById('jenis-keluhan').value; // Complaint type
             const location = document.getElementById('lokasi').value; // Location
             const description = document.getElementById('deskripsi').value; // Description
             const reportDate = document.getElementById('tanggal').value; // Date of the report
