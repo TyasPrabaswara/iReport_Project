@@ -144,7 +144,17 @@ function addReportTrans($data) {
 
 
     //converting the date format to YYYY-MM-DD because MySQL says so
-    $reportDate = DateTime::createFromFormat('d/m/Y', $reportDate)->format('Y-m-d');
+    // Convert the date format to YYYY-MM-DD
+    $dateObject = DateTime::createFromFormat('d/m/Y', $reportDate);
+    
+    // Check if the date was parsed correctly
+    if ($dateObject === false) {
+        return "Invalid date format. Please use DD/MM/YYYY.";
+    }
+
+    // Format the date to YYYY-MM-DD
+    $reportDate = $dateObject->format('Y-m-d');
+
 
     // Handle file upload
     $media = upload(); // Call the upload function
@@ -171,19 +181,22 @@ function addReportTrans($data) {
     }
 
     // Insert into laporan_transportasi table
+    error_log("Report Date before main query: $reportDate");
     $query = "INSERT INTO laporan_transportasi (id_penumpang, id_transportasi, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, media_laporan) 
               VALUES ('$passengerId', '$vehicleId', '$complaintType', '$description', '$reportDate', '$media')";
-    if (mysqli_query($conn, $query)) {
-        /*
-        $reportId = mysqli_insert_id($conn);
-        $historyQuery = "INSERT INTO riwayat_laporan_transportasi (id_laporan, id_penumpang, id_transportasi, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, media_laporan, status) 
-                         SELECT id_laporan, id_penumpang, id_transportasi, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, media_laporan, status 
-                         FROM laporan_transportasi WHERE id_laporan = '$reportId'";
-        mysqli_query($conn, $historyQuery);*/
+
+if (mysqli_query($conn, $query)) {
+    $reportId = mysqli_insert_id($conn);
+    //insert into riwayat_laporan_transportasi table
+    $historyQuery = "INSERT INTO riwayat_laporan_transportasi (id_laporan, id_penumpang, tanggal_perubahan) VALUES ('$reportId', '$passengerId', '$reportDate')";
+    if (mysqli_query($conn, $historyQuery)) {
         return "success"; // Return success message
     } else {
-        return "Database error: " . mysqli_error($conn); // Return detailed error message
+        return "History table error: " . mysqli_error($conn);
     }
+} else {
+    return "Database error: " . mysqli_error($conn); // Return detailed error message
+}
 }
 
 function addReportLoc($data) {
@@ -262,14 +275,14 @@ function addReportLoc($data) {
     $query = "INSERT INTO laporan_lokasi (id_penumpang, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, id_lokasi, media_laporan) 
               VALUES ('$passengerId', '$complaintType', '$description', '$reportDate', '$locationId', '$media')";
     if (mysqli_query($conn, $query)) {
-        /*
         $reportId = mysqli_insert_id($conn);
-        // Save to history table
-        $historyQuery = "INSERT INTO riwayat_laporan_lokasi (id_laporan, id_penumpang, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, id_lokasi, media_laporan, status) 
-                         SELECT id_laporan, id_penumpang, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, id_lokasi, media_laporan, status 
-                         FROM laporan_lokasi WHERE id_laporan = '$reportId'";
-        mysqli_query($conn, $historyQuery);*/
-        return "success"; // Return success message
+        //insert into riwayat_laporan_lokasi table
+        $historyQuery = "INSERT INTO riwayat_laporan_lokasi (id_laporan, id_penumpang, tanggal_perubahan) VALUES ('$reportId', '$passengerId', '$reportDate')";
+        if (mysqli_query($conn, $historyQuery)) {
+            return "success"; // Return success message
+        } else {
+            return "History table error: " . mysqli_error($conn);
+        }
     } else {
         return "Database error: " . mysqli_error($conn); // Return detailed error message
     }

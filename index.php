@@ -107,6 +107,7 @@
                     break;
                 case 'historyAll':
                     include 'includes/navbarMenuItems.php';
+                    include 'db/reportFunctions.php';
                     $file_path = "page/historyAll.php";
                     break;
                 case 'settings':
@@ -123,6 +124,7 @@
                 case 'admin':
                     $file_path = "page/admin.php";
                     break;
+                
             }
         }
 

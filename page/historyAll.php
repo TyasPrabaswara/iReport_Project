@@ -3,6 +3,17 @@
 
 <?php
 $pageTitle = 'History - iReport';
+
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+error_log("Including reportFunctions.php");
+
+
+// Prevent multiple inclusions
+require_once __DIR__ . '/database.php'; // Use require_once here
+
 ?>
 
 <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
