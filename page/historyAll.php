@@ -40,7 +40,7 @@ error_log("Including reportFunctions.php");
                 echo "<td>{$report['jenis_keluhan']}</td>";
                 echo "<td>{$report['deskripsi_keluhan']}</td>";
                 echo "<td>{$report['tanggal_laporan']}</td>";
-                echo "<td>{$report['resolved_date']}</td>";
+                echo "<td>{$report['tanggal_perubahan']}</td>";
                 echo "<td><a href='viewReport.php?id={$report['id_laporan']}&type=transportation'>View</a></td>";
                 echo "</tr>";
             }
@@ -52,7 +52,7 @@ error_log("Including reportFunctions.php");
                 echo "<td>{$report['jenis_keluhan']}</td>";
                 echo "<td>{$report['deskripsi_keluhan']}</td>";
                 echo "<td>{$report['tanggal_laporan']}</td>";
-                echo "<td>{$report['resolved_date']}</td>";
+                echo "<td>{$report['tanggal_perubahan']}</td>";
                 echo "<td><a href='viewReport.php?id={$report['id_laporan']}&type=location'>View</a></td>";
                 echo "</tr>";
             }
