@@ -8,20 +8,22 @@ $pageTitle = 'Home - iReport';
         <div class="hero-content">
             <h1>REPORT YOUR PROBLEM</h1>
             <button class="here-link">HERE</button>
-        <script>
-            document.querySelector('.here-link').addEventListener('click', function(event) {
-                event.preventDefault();
-                document.querySelector('#report-option').scrollIntoView({ behavior: 'smooth' });
-            });
-        </script>
+            <script>
+                document.querySelector('.here-link').addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.querySelector('#report-option').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            </script>
         </div>
     </section>
 
-    <div id="report-option" >
+    <div id="report-option">
         <p></p>
         <h1 style="text-align: center; margin-top: 70px; font-size: 2em; font-weight: bold;">Report Option</h1>
     </div>
-    <section class="features" >
+    <section class="features">
         <div class="features-container">
             <a href="index.php?page=reportTransport" class="feature-card">
                 <div class="icon">
@@ -30,7 +32,7 @@ $pageTitle = 'Home - iReport';
                     </svg>
                 </div>
                 <h2>TRANSPORT</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste illum voluptas eveniet optio adipisci esse aliquid libero accusantium rerum delectus.</p>
+                <p>Laporkan permasalahan yang Anda temui pada transportasi umum (kereta dan bus), seperti fasilitas yang rusak, pelayanan yang kurang baik, atau masalah keamanan, secara mudah dan cepat.</p>
             </a>
 
             <a href="index.php?page=reportLocation" class="feature-card">
@@ -41,7 +43,7 @@ $pageTitle = 'Home - iReport';
                     </svg>
                 </div>
                 <h2>LOCATION</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste illum voluptas eveniet optio adipisci esse aliquid libero accusantium rerum delectus.</p>
+                <p>Sampaikan laporan terkait kondisi atau permasalahan di lokasi tertentu, seperti fasilitas umum yang rusak, area yang kurang aman, atau gangguan lainnya, dengan cepat dan akurat.</p>
             </a>
         </div>
     </section>
