@@ -17,7 +17,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 
 
 // Include the database connection using a relative path
-require __DIR__ . '/database.php'; // Adjust the path as necessary
+require_once __DIR__ . '/database.php'; // Adjust the path as necessary
 
 
 
@@ -63,6 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Function to handle file uploads
 function upload() {
+    error_log("Upload function called from: " . print_r(debug_backtrace(), true));
+
     $namaFile = $_FILES['photo']['name'];
     $ukuranFile = $_FILES['photo']['size'];
     $error = $_FILES['photo']['error'];
@@ -305,7 +307,7 @@ function fetchUserReportHistory($userId) {
 
     // Fetch transportation history
     $queryTransport = "
-        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi, rt.resolved_date
+        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi, rt.tanggal_perubahan
         FROM riwayat_laporan_transportasi rt
         JOIN laporan_transportasi lt ON rt.id_laporan = lt.id_laporan
         WHERE lt.id_penumpang = '$userId'
@@ -315,13 +317,17 @@ function fetchUserReportHistory($userId) {
 
     // Fetch location history
     $queryLocation = "
-        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi, rl.resolved_date
+        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi, rl.tanggal_perubahan
         FROM riwayat_laporan_lokasi rl
         JOIN laporan_lokasi ll ON rl.id_laporan = ll.id_laporan
         WHERE ll.id_penumpang = '$userId'
     ";
     $resultLocation = mysqli_query($conn, $queryLocation);
     $locationHistory = mysqli_fetch_all($resultLocation, MYSQLI_ASSOC);
+
+    error_log("Transport History: " . print_r($transportHistory, true));
+    error_log("Location History: " . print_r($locationHistory, true));
+
 
     // Combine both histories
     return [

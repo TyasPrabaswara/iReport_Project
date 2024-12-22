@@ -107,7 +107,7 @@
                     break;
                 case 'historyAll':
                     include 'includes/navbarMenuItems.php';
-                    include 'db/reportFunctions.php';
+                    include 'includes/viewReport.php';
                     $file_path = "page/historyAll.php";
                     break;
                 case 'settings':

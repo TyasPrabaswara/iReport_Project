@@ -42,3 +42,6 @@ v0.1.22:
 v0.1.28:
 - adding reports to history function is now working
 - viewing report history still unuseable
+
+v0.1.29
+- added half working history page
