@@ -14,21 +14,12 @@ include __DIR__ . '/../db/database.php';
     <h1>Jadwal</h1>
   </section>
 
-<<<<<<< HEAD
-    <section class="daily-news">
-    <?php 
-        $sql = 'SELECT * FROM keretaApi';
-$result = $connect->query($sql);?>
-        <div class="container">
-            <h2 class="text-start">Kereta Bandara</h2>
-=======
   <section class="daily-news">
     <?php
     $sql = 'SELECT * FROM keretaApi';
-    $result = $conn->query($sql); ?>
+    $result = $connect->query($sql); ?>
     <div class="container">
-      <h2 class="text-start">Kereta Api</h2>
->>>>>>> 7fead58c3d1537a7c00344951d4300c43460faa8
+      <h2 class="text-start">Kereta Bandara</h2>
 
 
       <table class="table table-hover">
@@ -55,20 +46,6 @@ $result = $connect->query($sql);?>
               echo "<td>" . htmlspecialchars($row['kedatangan']) . "</td>";
               echo "</tr>";
             }
-<<<<<<< HEAD
-            ?>  
-  </tbody>
-</table>
-        </section>
- <section class="daily-news">
-    <?php 
-        $sql = 'SELECT * FROM KRL';
-$result = $connect->query($sql);?>
-        <div class="container">
-            <h2 class="text-start">Kereta Lokal</h2>
-=======
-          } else {
-            echo "<tr><td colspan='6'>Tidak ada jadwal tersedia.</td></tr>";
           }
           ?>
         </tbody>
@@ -77,10 +54,9 @@ $result = $connect->query($sql);?>
   <section class="daily-news">
     <?php
     $sql = 'SELECT * FROM KRL';
-    $result = $conn->query($sql); ?>
+    $result = $connect->query($sql); ?>
     <div class="container">
-      <h2 class="text-start">KRL</h2>
->>>>>>> 7fead58c3d1537a7c00344951d4300c43460faa8
+      <h2 class="text-start">Kereta Lokal</h2>
 
 
       <table class="table table-hover">
