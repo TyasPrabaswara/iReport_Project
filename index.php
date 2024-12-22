@@ -120,6 +120,9 @@
                 case 'checkUserAndVehicle':
                     $file_path = "page/checkUserAndVehicle.php";
                     break;
+                case 'admin':
+                    $file_path = "page/admin.php";
+                    break;
             }
         }
 

@@ -3,78 +3,52 @@
 
 <?php
 $pageTitle = 'History - iReport';
-// Fetch report data
-$sql = "SELECT created_at, description, status FROM reports";
-$reports = $conn->query($sql);
-
-// Initialize statistics variables
-$totalReports = $reports->num_rows;
-$pendingReports = $conn->query("SELECT COUNT(*) as count FROM reports WHERE status='pending'")->fetch_assoc()['count'];
-$resolvedReports = $conn->query("SELECT COUNT(*) as count FROM reports WHERE status='resolved'")->fetch_assoc()['count'];
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+    <h3>Report History</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Report ID</th>
+                <th>Complaint Type</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Resolved Date</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $userId = $_SESSION['id_penumpang']; // Get the logged-in user's ID
+            $history = fetchUserReportHistory($userId);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- <link rel="stylesheet" href="css/historyAll.css"> -->
-</head>
+            // Display transportation history
+            foreach ($history['transportation'] as $report) {
+                echo "<tr>";
+                echo "<td>{$report['id_laporan']}</td>";
+                echo "<td>{$report['jenis_keluhan']}</td>";
+                echo "<td>{$report['deskripsi_keluhan']}</td>";
+                echo "<td>{$report['tanggal_laporan']}</td>";
+                echo "<td>{$report['resolved_date']}</td>";
+                echo "<td><a href='viewReport.php?id={$report['id_laporan']}&type=transportation'>View</a></td>";
+                echo "</tr>";
+            }
 
-<body>
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Filters -->
-        <div class="filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Transport</button>
-            <button class="filter-btn">Location</button>
-        </div>
-
-        <!-- Statistics Cards -->
-        <div class="stats-container">
-            <div class="stat-card">
-                <h3>Total Reports</h3>
-                <div class="stat-number blue"><?php echo $totalReports; ?></div>
-                <p>All time reports submitted</p>
-            </div>
-            <div class="stat-card">
-                <h3>Pending</h3>
-                <div class="stat-number orange"><?php echo $pendingReports; ?></div>
-                <p>Reports awaiting response</p>
-            </div>
-            <div class="stat-card">
-                <h3>Total Reports</h3>
-                <div class="stat-number green"><?php echo $resolvedReports; ?></div>
-                <p>Successfully resolved reports</p>
-            </div>
-        </div>
-
-        <!-- Reports List -->
-        <div class="reports-list">
-            <?php while ($report = $reports->fetch_assoc()): ?>
-                <div class="report-item">
-                    <div class="report-image">
-                        <img src="report-placeholder.png" alt="Report">
-                    </div>
-                    <div class="report-content">
-                        <h4>Laporan <?php echo $report['created_at']; ?></h4>
-                        <p>Jenis Keluhan: <?php echo htmlspecialchars($report['description']); ?></p>
-                    </div>
-                    <div class="report-status <?php echo $report['status']; ?>">
-                        <?php echo ucfirst($report['status']); ?>
-                    </div>
-                </div>
-            <?php endwhile; ?>
-        </div>
-    </main>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-
-</html>
+            // Display location history
+            foreach ($history['location'] as $report) {
+                echo "<tr>";
+                echo "<td>{$report['id_laporan']}</td>";
+                echo "<td>{$report['jenis_keluhan']}</td>";
+                echo "<td>{$report['deskripsi_keluhan']}</td>";
+                echo "<td>{$report['tanggal_laporan']}</td>";
+                echo "<td>{$report['resolved_date']}</td>";
+                echo "<td><a href='viewReport.php?id={$report['id_laporan']}&type=location'>View</a></td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
 <?php $conn->close(); ?>

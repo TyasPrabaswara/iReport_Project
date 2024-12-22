@@ -173,8 +173,13 @@ function addReportTrans($data) {
     // Insert into laporan_transportasi table
     $query = "INSERT INTO laporan_transportasi (id_penumpang, id_transportasi, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, media_laporan) 
               VALUES ('$passengerId', '$vehicleId', '$complaintType', '$description', '$reportDate', '$media')";
-    
     if (mysqli_query($conn, $query)) {
+        /*
+        $reportId = mysqli_insert_id($conn);
+        $historyQuery = "INSERT INTO riwayat_laporan_transportasi (id_laporan, id_penumpang, id_transportasi, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, media_laporan, status) 
+                         SELECT id_laporan, id_penumpang, id_transportasi, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, media_laporan, status 
+                         FROM laporan_transportasi WHERE id_laporan = '$reportId'";
+        mysqli_query($conn, $historyQuery);*/
         return "success"; // Return success message
     } else {
         return "Database error: " . mysqli_error($conn); // Return detailed error message
@@ -256,11 +261,60 @@ function addReportLoc($data) {
     // Insert into laporan_lokasi table
     $query = "INSERT INTO laporan_lokasi (id_penumpang, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, id_lokasi, media_laporan) 
               VALUES ('$passengerId', '$complaintType', '$description', '$reportDate', '$locationId', '$media')";
-    
     if (mysqli_query($conn, $query)) {
+        /*
+        $reportId = mysqli_insert_id($conn);
+        // Save to history table
+        $historyQuery = "INSERT INTO riwayat_laporan_lokasi (id_laporan, id_penumpang, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, id_lokasi, media_laporan, status) 
+                         SELECT id_laporan, id_penumpang, jenis_keluhan, deskripsi_keluhan, tanggal_laporan, id_lokasi, media_laporan, status 
+                         FROM laporan_lokasi WHERE id_laporan = '$reportId'";
+        mysqli_query($conn, $historyQuery);*/
         return "success"; // Return success message
     } else {
         return "Database error: " . mysqli_error($conn); // Return detailed error message
     }
 }
+
+function resolveReport($reportId, $type) {
+    global $conn;
+
+    $table = $type === "location" ? "laporan_lokasi" : "laporan_transportasi";
+    $query = "UPDATE $table SET status = 'resolved' WHERE id_laporan = '$reportId'";
+    if (mysqli_query($conn, $query)) {
+        return "success";
+    } else {
+        return "Database error: " . mysqli_error($conn);
+    }
+}
+
+function fetchUserReportHistory($userId) {
+    global $conn;
+
+    // Fetch transportation history
+    $queryTransport = "
+        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi, rt.resolved_date
+        FROM riwayat_laporan_transportasi rt
+        JOIN laporan_transportasi lt ON rt.id_laporan = lt.id_laporan
+        WHERE lt.id_penumpang = '$userId'
+    ";
+    $resultTransport = mysqli_query($conn, $queryTransport);
+    $transportHistory = mysqli_fetch_all($resultTransport, MYSQLI_ASSOC);
+
+    // Fetch location history
+    $queryLocation = "
+        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi, rl.resolved_date
+        FROM riwayat_laporan_lokasi rl
+        JOIN laporan_lokasi ll ON rl.id_laporan = ll.id_laporan
+        WHERE ll.id_penumpang = '$userId'
+    ";
+    $resultLocation = mysqli_query($conn, $queryLocation);
+    $locationHistory = mysqli_fetch_all($resultLocation, MYSQLI_ASSOC);
+
+    // Combine both histories
+    return [
+        'transportation' => $transportHistory,
+        'location' => $locationHistory
+    ];
+}
+
 ?>
