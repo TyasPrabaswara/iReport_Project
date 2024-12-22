@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2024 at 04:37 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Dec 22, 2024 at 07:03 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,8 @@ INSERT INTO `berita` (`id_berita`, `judul`, `isi_berita`, `penulis`, `tanggal_pu
 (1, 'Minat Warga Jogja Naik Transportasi Umum Rendah, Siro: Saya Kapok Nunggu Lama Pelayanan Payah', 'SuaraJogja.id - Siro (29) warga Wedomartani, Sleman mengaku kini lebih memilih menggunakan kendaraan pribadi untuk beraktivitas ke seputar Jogja ketimbang menggunakan transportasi umum. Ia menetapkan keputusan tersebut lantaran pernah mengalami pengalaman kurang nyaman saat menggunakan Trans Jogja.\r\n\r\n\"Sistem transportasi umum di Jogja tentu sangat kurang ya, pernah aku nyoba pakai Trans Jogja dari Bandara (Adisutjipto) ke Jalan Sudirman, itu lamanya minta ampun. Udah lamaa pelayanannya payah soalnya enggak diarahin gitu. Itu pertama dan terakhir saya naik transportasi umum di Jogja,\" keluh Siro kepada SuaraJogja.\r\n\r\nMenurutnya hal itu yang kemudian membuatnya dan kebanyakan orang memilih untuk membeli kendaraan pribadi. Sebab tak dimungkiri menjadi lebih efisien dan fleksibel dari sisi waktu.', 'Galih Priatmojo | Hiskia Andika Weadcaksana - Suarajogja', '2024-12-19'),
 (2, 'Dishub DIY Berkomitmen Wujudkan Sarana Prasarana Transportasi Umum Ramah Disabilitas\r\n', 'Yogyakarta - Masih banyaknya fasilitas transportasi umum yang belum ramah disabilitas dan berbagai kendala di lapangan menjadi perhatian Dinas Perhubungan DIY. Hal tersebut disampaikan oleh Sekretaris Dinas Perhubungan DIY, Nunik Arzakiyah saat membuka Sosialisasi Urusan Perhubungan dengan tema Layanan Transportasi yang Ramah Disabilitas pada Rabu, 23 Oktober 2024 di Ruang Rapat Kendalisodo Kantor Dinas Perhubungan DIY. \r\n\r\nPertemuan untuk membahas peningkatan aksesibilitas transportasi publik, khususnya layanan Trans Jogja dan Teman Bus ini diselenggarakan oleh Dinas Perhubungan DIY dan melibatkan berbagai pihak, termasuk dari Forum Komunikasi Difabel DIY, Ombudsman, PT. AMI, serta PT. JTT', ' Contributor Dishub - Dishub DIY', '2024-12-19'),
 (3, 'Sembilan Stasiun Kereta Api di Yogyakarta - Solo Sudah Terintegrasi Dengan Moda Transportasi Lain', 'TEMPO.CO, Yogykarta - Sebanyak sembilan stasiun kereta api yang berada di Daerah Operasi atau Daop 6 Yogyakarta sudah terintegrasi dengan moda transportasi lainnya, baik kereta api jarak jauh, kereta bandara, dan bus. Integrasi ini mempermudah mobilitas masyarakat pengguna jasa PT Kereta Api Indonesia (KAI) yang semakin dinamis.\r\n\r\nKrisbiyantoro, Manager Humas Daop 6 Yogyakarta, mengatakan bahwa inovasi yang dilakukan Daop 6 ini sebagai upaya mendukung pembangunan berkelanjutan, selaras dengan tema HUT ke-79 KAI yaitu Safety and Sustainability. \"Daop 6 secara konsisten menciptakan akses ke transportasi umum lainnya secara aman, efisien, tetap menjaga lingkungan, dan mendukung kesejahteraan sosial-ekonomi di berbagai daerah,” kata Krisbiyantoro, Kamis, 26 September 2024.', 'ATENG', '2024-12-19'),
-(4, 'Test Berita 1', 'Test konten berita 1', 'admin', '2024-12-21');
+(4, 'Test Berita 1', 'Test konten berita 1ewe', 'admin', '2024-12-21'),
+(5, 'q3', '121', '122', '2024-12-23');
 
 -- --------------------------------------------------------
 
@@ -52,8 +53,8 @@ INSERT INTO `berita` (`id_berita`, `judul`, `isi_berita`, `penulis`, `tanggal_pu
 --
 
 CREATE TABLE `Bus` (
-  `id_Bus` int(11) NOT NULL,
-  `noPlat` varchar(30) NOT NULL,
+  `id` int(11) NOT NULL,
+  `noSeri` varchar(30) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `asal` varchar(30) NOT NULL,
   `tujuan` varchar(30) NOT NULL,
@@ -65,7 +66,7 @@ CREATE TABLE `Bus` (
 -- Dumping data for table `Bus`
 --
 
-INSERT INTO `Bus` (`id_Bus`, `noPlat`, `nama`, `asal`, `tujuan`, `keberangkatan`, `kedatangan`) VALUES
+INSERT INTO `Bus` (`id`, `noSeri`, `nama`, `asal`, `tujuan`, `keberangkatan`, `kedatangan`) VALUES
 (1, '123 abc 456', 'akoie', 'solo', 'jogja', '2024-12-19 05:10:59', '2024-12-19 05:10:59'),
 (2, '123 rhu 098', 'banud', 'hhuai', 'hwhfb', '2024-12-19 05:10:59', '2024-12-19 05:10:59');
 
@@ -88,7 +89,7 @@ CREATE TABLE `dishub` (
 --
 
 CREATE TABLE `keretaApi` (
-  `id_transportasi` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `noSeri` varchar(30) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `asal` varchar(30) NOT NULL,
@@ -101,8 +102,8 @@ CREATE TABLE `keretaApi` (
 -- Dumping data for table `keretaApi`
 --
 
-INSERT INTO `keretaApi` (`id_transportasi`, `noSeri`, `nama`, `asal`, `tujuan`, `keberangkatan`, `kedatangan`) VALUES
-(2, '123 abc 234', 'poqwe', 'kotoa', 'hsbfow', '2024-12-19 05:11:49', '2024-12-19 05:11:49'),
+INSERT INTO `keretaApi` (`id`, `noSeri`, `nama`, `asal`, `tujuan`, `keberangkatan`, `kedatangan`) VALUES
+(2, '123 abc 234', 'poqweqq', 'kotoa', 'hsbfow', '2024-12-19 05:11:49', '2024-12-19 05:11:49'),
 (3, 'u2047 2994', 'nams', 'hdiodhf ', 'uwifhwebfj', '2024-12-19 05:11:49', '2024-12-19 05:11:49');
 
 -- --------------------------------------------------------
@@ -112,7 +113,7 @@ INSERT INTO `keretaApi` (`id_transportasi`, `noSeri`, `nama`, `asal`, `tujuan`, 
 --
 
 CREATE TABLE `KRL` (
-  `id_KRL` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `noSeri` varchar(30) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `asal` varchar(30) NOT NULL,
@@ -125,7 +126,7 @@ CREATE TABLE `KRL` (
 -- Dumping data for table `KRL`
 --
 
-INSERT INTO `KRL` (`id_KRL`, `noSeri`, `nama`, `asal`, `tujuan`, `keberangkatan`, `kedatangan`) VALUES
+INSERT INTO `KRL` (`id`, `noSeri`, `nama`, `asal`, `tujuan`, `keberangkatan`, `kedatangan`) VALUES
 (1, '1234b 0987', 'hsj dhe', 'uwhnks', 'uhdbff', '2024-12-19 05:12:45', '2024-12-19 05:12:45'),
 (2, '0987 tuhn 7890hj', 'hssnsh', 'jioki', 'hsjscn', '2024-12-19 05:12:45', '2024-12-19 05:12:45');
 
@@ -150,10 +151,7 @@ CREATE TABLE `laporan_lokasi` (
 --
 
 INSERT INTO `laporan_lokasi` (`id_laporan`, `id_penumpang`, `jenis_keluhan`, `deskripsi_keluhan`, `tanggal_laporan`, `id_lokasi`, `media_laporan`) VALUES
-(1, 8, 'kerusakan', 'das', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(2, 10, 'kebersihan', 'cbvcbv', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(3, 10, 'kerusakan', 'asd', '2024-12-28', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(4, 10, 'kebersihan', 'Vickers Test Location', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
+(1, 8, 'kerusakan', 'das', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
 
 -- --------------------------------------------------------
 
@@ -199,15 +197,7 @@ INSERT INTO `laporan_transportasi` (`id_laporan`, `id_penumpang`, `jenis_keluhan
 (21, 8, 'kerusakan', 'asd vvvv', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
 (22, 8, 'kerusakan', 'vvvvvvvvvvvvvvvvvvvvvvvvv', '2024-12-31', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
 (23, 8, 'kebersihan', 'annnnnnnnnnnnnnnnnnnnnn', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(24, 8, 'kerusakan', 'asdasdasdasdfnmhfhngmg rehga', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(25, 10, 'kerusakan', 'balling', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(26, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(27, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(28, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(29, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(30, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(31, 10, 'kerusakan', 'History Transportation Vickers Test', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(32, 10, 'kerusakan', 'adsadsadsds', '2024-12-31', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
+(24, 8, 'kerusakan', 'asdasdasdasdfnmhfhngmg rehga', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
 
 -- --------------------------------------------------------
 
@@ -239,16 +229,8 @@ CREATE TABLE `riwayat_laporan_lokasi` (
   `id_laporan` int(11) NOT NULL,
   `id_penumpang` int(11) NOT NULL,
   `tanggal_perubahan` date NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'UNRESOLVED'
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `riwayat_laporan_lokasi`
---
-
-INSERT INTO `riwayat_laporan_lokasi` (`id_riwayat`, `id_laporan`, `id_penumpang`, `tanggal_perubahan`, `status`) VALUES
-(1, 3, 10, '2024-12-28', 'UNRESOLVED'),
-(2, 4, 10, '2024-12-22', 'UNRESOLVED');
 
 -- --------------------------------------------------------
 
@@ -261,16 +243,8 @@ CREATE TABLE `riwayat_laporan_transportasi` (
   `id_laporan` int(11) NOT NULL,
   `id_penumpang` int(11) NOT NULL,
   `tanggal_perubahan` date NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'UNRESOLVED'
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `riwayat_laporan_transportasi`
---
-
-INSERT INTO `riwayat_laporan_transportasi` (`id_riwayat`, `id_laporan`, `id_penumpang`, `tanggal_perubahan`, `status`) VALUES
-(1, 31, 10, '2024-12-22', 'UNRESOLVED'),
-(2, 32, 10, '2024-12-31', 'UNRESOLVED');
 
 -- --------------------------------------------------------
 
@@ -321,7 +295,9 @@ INSERT INTO `user` (`id_penumpang`, `nama`, `no_telp`, `email`, `username`, `pas
 (8, 'test4', 87668754, 'test4@gmail.com', 'test4', '$2y$10$EZEMLG9mSu6fz2DzWclVmubLeOS7lAXOMsNNJCEBVOG6zSH.N/gkG', 'user'),
 (9, 'bola', 18172475, 'bola@gmail.com', 'bola', '$2y$10$ygikqb2wXmqbkrVT9q174utE8lruPQuWje5QKYYLaxK.KDqAvZ9E6', 'user'),
 (10, 'Vickers', 81236427, 'vckrs@gmail.com', 'vckrsmk11', '$2y$10$nBKmIwkKqTpqkn1d9cz0Kehdij7gYv2Bwz.wWkLMq7S2yUcKu79Pq', 'user'),
-(12, 'Ridwan', 81234124, 'ridwan@gmail.com', 'rdwn', '$2y$10$zOZypLjyuqvRq7Rs6L3ixe4WrI5hOklv/YNUBTLQURoJifmtnw7UK', 'admin');
+(12, 'Ridwan', 81234124, 'ridwan@gmail.com', 'rdwn', '$2y$10$zOZypLjyuqvRq7Rs6L3ixe4WrI5hOklv/YNUBTLQURoJifmtnw7UK', 'admin'),
+(13, 'akbar', 123456, 'akbar@gmail.com', 'akbar', '$2y$10$lzePVpbr/YqnxstlP937H.2WAodn/Ygz.jwL5Qj8WZV89H8zeSt/G', 'user'),
+(14, '123khjkqqq', 123, '123@gmail.com', '123', '$2y$10$2w2bpRlVb8WO4FOYjl42Y.G./WnMSn.JGuceUU4HtYFe9zQW1aRTO', 'user');
 
 --
 -- Indexes for dumped tables
@@ -334,10 +310,28 @@ ALTER TABLE `berita`
   ADD PRIMARY KEY (`id_berita`);
 
 --
+-- Indexes for table `Bus`
+--
+ALTER TABLE `Bus`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `dishub`
 --
 ALTER TABLE `dishub`
   ADD PRIMARY KEY (`id_dishub`);
+
+--
+-- Indexes for table `keretaApi`
+--
+ALTER TABLE `keretaApi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `KRL`
+--
+ALTER TABLE `KRL`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `laporan_lokasi`
@@ -352,7 +346,8 @@ ALTER TABLE `laporan_lokasi`
 --
 ALTER TABLE `laporan_transportasi`
   ADD PRIMARY KEY (`id_laporan`),
-  ADD KEY `fk_laporan_user` (`id_penumpang`);
+  ADD KEY `fk_laporan_user` (`id_penumpang`),
+  ADD KEY `fk_laporan_transportasi` (`id_transportasi`);
 
 --
 -- Indexes for table `lokasi`
@@ -396,7 +391,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `Bus`
+--
+ALTER TABLE `Bus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dishub`
@@ -405,16 +406,28 @@ ALTER TABLE `dishub`
   MODIFY `id_dishub` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `keretaApi`
+--
+ALTER TABLE `keretaApi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `KRL`
+--
+ALTER TABLE `KRL`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `laporan_lokasi`
 --
 ALTER TABLE `laporan_lokasi`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `laporan_transportasi`
 --
 ALTER TABLE `laporan_transportasi`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
@@ -426,13 +439,13 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `riwayat_laporan_lokasi`
 --
 ALTER TABLE `riwayat_laporan_lokasi`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `riwayat_laporan_transportasi`
 --
 ALTER TABLE `riwayat_laporan_transportasi`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `transportasi`
@@ -444,7 +457,7 @@ ALTER TABLE `transportasi`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_penumpang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_penumpang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
