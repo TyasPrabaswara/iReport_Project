@@ -307,7 +307,7 @@ function fetchUserReportHistory($userId) {
 
     // Fetch transportation history
     $queryTransport = "
-        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi, rt.resolved_date
+        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi, rt.tanggal_perubahan
         FROM riwayat_laporan_transportasi rt
         JOIN laporan_transportasi lt ON rt.id_laporan = lt.id_laporan
         WHERE lt.id_penumpang = '$userId'
@@ -317,7 +317,7 @@ function fetchUserReportHistory($userId) {
 
     // Fetch location history
     $queryLocation = "
-        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi, rl.resolved_date
+        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi, rl.tanggal_perubahan
         FROM riwayat_laporan_lokasi rl
         JOIN laporan_lokasi ll ON rl.id_laporan = ll.id_laporan
         WHERE ll.id_penumpang = '$userId'

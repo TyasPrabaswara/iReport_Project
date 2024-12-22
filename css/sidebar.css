@@ -12,6 +12,12 @@
     border-radius: 8px;
 }
 
+.sidebar-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
 .sidebar-menu {
     list-style: none;
     padding: 0;
@@ -41,6 +47,9 @@
 
 /* Responsive Design for Sidebar */
 @media (max-width: 768px) {
+    .sidebar-container {
+        max-width: 300px;
+    }
     .sidebar {
         width: 100%;
         height: auto;
@@ -49,3 +58,19 @@
         border-bottom: 1px solid #eee;
     }
 }
+
+@media (max-width: 480px) {
+    .sidebar {
+      width: 100%; /* Make the sidebar full-width on mobile screens */
+      height: auto; /* Make the height auto to fit the content */
+      padding: 10px; /* Reduce the padding to make it look better on mobile screens */
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .sidebar {
+      width: 100%; /* Make the sidebar full-width on very small mobile screens */
+      height: auto; /* Make the height auto to fit the content */
+      padding: 5px; /* Reduce the padding even further on very small mobile screens */
+    }
+  }

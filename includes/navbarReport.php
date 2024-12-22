@@ -6,10 +6,9 @@ isinya button
 
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
-// $additionalCSS = ['navbarReport.css'];
 ?>
 <aside class="sidebar">
-    <nav class="sidebar-nav">
+    <nav class="sidebar-container">
         <ul class="sidebar-menu">
             <li class="sidebar-item <?php echo ($_GET['page'] == 'reportTransport') ? 'active' : ''; ?>">
                 <a href="index.php?page=reportTransport">Transport</a>

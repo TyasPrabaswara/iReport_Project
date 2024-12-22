@@ -1,43 +1,69 @@
+/* Sidebar styles */
 .sidebar {
-    width: 250px; /* Set a width for the sidebar */
-    background-color: white; /* Change background color to white */
-    color: black; /* Change text color to black for better contrast */
-    padding: 15px; /* Padding around the content */
-    position: fixed; /* Fixed position */
-    height: 100%; /* Full height */
-    border-radius: 4px; /* Rounded edges */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
-    top: 0; /* Align to the top */
-    left: 0; /* Align to the left */
-    z-index: 1000; /* Ensure it sits above other content */
+    width: auto; /* Sidebar width adjusts to content */
+    max-width: 250px; /* Max width when content is large */
+    background-color: white;
+    color: black;
+    padding: 15px;
+    position: fixed;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
+/* Sidebar navigation styles */
 .sidebar-nav {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
 }
 
+/* Sidebar menu styles */
 .sidebar-menu {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove default padding */
+    list-style-type: none;
+    padding: 0;
 }
 
 .sidebar-item {
-    margin: 10px 0; /* Space between items */
+    margin: 10px 0;
 }
 
 .sidebar-item a {
-    color: black; /* Link color */
-    text-decoration: none; /* Remove underline */
-    padding: 10px; /* Padding for links */
-    display: block; /* Make the link fill the item */
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
 }
 
 .sidebar-item.active a {
-    background-color: #555; /* Background for active item */
+    background-color: #555;
 }
 
+/* Main content area */
 .main-content {
-    margin-left: 270px; /* Add margin to the left to accommodate the sidebar */
-    padding: 20px; /* Add padding for better spacing */
+    margin-left: 270px; /* Adjusted to accommodate sidebar */
+    padding: 20px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .sidebar {
+        max-width: 200px; /* Reduced max width for smaller screens */
+    }
+
+    .main-content {
+        margin-left: 220px; /* Adjust main content for smaller sidebar */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        max-width: 150px; /* Further reduced for very small screens */
+    }
+
+    .main-content {
+        margin-left: 170px; /* Adjust main content for very small sidebar */
+    }
 }

@@ -16,11 +16,8 @@
     ini_set('display_errors', 1);
 
     include 'db/database.php';
-    error_log("Database Included");
-
     include 'db/userFunctions.php';
     include 'db/reportFunctions.php';
-    //include_once 'db/reportFunctionLoc.php';
 
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -45,7 +42,8 @@
             echo '<link rel="stylesheet" href="css/profile.css">';
             break;
         case 'reportTransport':
-            echo '<link rel="stylesheet" href="css/sidebar.css">';
+            //echo '<link rel="stylesheet" href="css/sidebar.css">';
+            echo '<link rel="stylesheet" href="css/sidebar.css?v=<?php echo time(); ?>">';
             echo '<link rel="stylesheet" href="css/report.css">';
             break;
         case 'reportLocation':
@@ -54,7 +52,6 @@
             break;
         case 'historyAll':
             echo '<link rel="stylesheet" href="css/sidebar.css">';
-            // echo '<link rel="stylesheet" href="css/historyAll.css">';
             break;
         case 'settings':
             echo '<link rel="stylesheet" href="css/sidebar.css">';
@@ -74,8 +71,8 @@
 <body>
     <?php
     include 'includes/header.php';
-    //include 'db/database.php';
     ?>
+
     <main>
         <?php
         $file_path = "page/home.php";  // Default path
@@ -135,7 +132,6 @@
         }
         ?>
     </main>
-    
     
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <?php include 'includes/footer.php'; ?>
