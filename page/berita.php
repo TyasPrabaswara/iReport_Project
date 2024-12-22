@@ -11,17 +11,17 @@ $result = $conn->query($sql);
 <main>
     <section class="hero">
         <div class="hero-overlay"></div>
-        <h1>NEWS</h1>
+        <h1><b>NEWS</b></h1>
     </section>
 
     <section class="daily-news">
         <div class="container">
-            <h2>DAILY NEWS</h2>
+            <h2><b>DAILY NEWS</b></h2>
 
             <!-- Featured News (Headline) -->
             <article class="featured-news">
                 <div class="news-image">
-                    <img src="img/berita.jpeg" alt="Transportation control during holiday">
+                    <img src="/iReport_Project/img/41832-bus-trans-jogja-suaraeleonora-pew.jpg" alt="Transportation control during holiday">
                 </div>
                 <div class="news-content">
                     <?php
@@ -57,7 +57,7 @@ $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
             echo '<article class="news-card col-12 col-md-6 col-lg-5 mb-4">
                 <div class="news-image">
-                    <img src="img/berita.jpeg" alt="Transportation news" class="img-fluid">
+                    <img src="/iReport_Project/img/kereta.jpeg" alt="Transportation news" class="img-fluid">
                 </div>
                 <div class="news-content p-3 shadow-sm">
                     <div class="news-meta d-flex justify-content-between text-muted mb-2">

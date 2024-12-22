@@ -24,7 +24,7 @@ $connect = mysqli_connect($host, $user, $pass, $db);
         $sql = 'SELECT * FROM keretaApi';
 $result = $connect->query($sql);?>
         <div class="container">
-            <h2 class="text-start">Kereta Api</h2>
+            <h2 class="text-start">Kereta Bandara</h2>
 
 
     <table class="table table-hover">
@@ -63,7 +63,7 @@ $result = $connect->query($sql);?>
         $sql = 'SELECT * FROM KRL';
 $result = $connect->query($sql);?>
         <div class="container">
-            <h2 class="text-start">KRL</h2>
+            <h2 class="text-start">Kereta Lokal</h2>
 
 
     <table class="table table-hover">

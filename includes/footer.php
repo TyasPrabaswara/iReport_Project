@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-logo">
-            <h2>LOGO</h2>
+            <img src="/iReport_Project/img/logo iReport (2).png" alt="iReport Logo" class="footer-logo-img" style=" width: 10vh; height: auto;">
         </div>
         
         <div class="footer-contact">

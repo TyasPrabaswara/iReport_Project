@@ -48,3 +48,7 @@ v0.1.29
 
 v0.1.32
 - history, profile, and viewReport works
+
+
+v0.1.34
+- tinggal rapihin cssnya
