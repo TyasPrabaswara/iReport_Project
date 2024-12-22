@@ -29,7 +29,7 @@ if (isset($_POST['tambahjadwal'])) {
         $stmt->bind_param("ssssss", $noSeri, $nama, $asal, $tujuan, $keberangkatan, $kedatangan);
 
         if ($stmt->execute()) {
-            $message = "Jadwal berhasil ditambahkan ke tabel $jenisTransportasi.";
+            $message = "Jadwal berhasil ditambahkan";
         } else {
             $message = "Error: " . $stmt->error;
         }
@@ -37,16 +37,19 @@ if (isset($_POST['tambahjadwal'])) {
         $stmt->close();
     }
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -69,7 +72,7 @@ if (isset($_POST['tambahjadwal'])) {
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1 class="h2">Welcome, Admin</h1>
-                    <button class="btn btn-outline-danger">Logout</button>
+                    <a href="../page/deletejadwal.php" class="btn btn-outline-danger">Hapus Jadwal</a>
                 </div>
                 <section id="schedule-section">
                     <div class="card shadow-sm">
@@ -124,5 +127,5 @@ if (isset($_POST['tambahjadwal'])) {
         </div>
     </div>
 </body>
-</html>
 
+</html>

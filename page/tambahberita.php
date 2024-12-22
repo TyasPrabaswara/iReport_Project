@@ -7,33 +7,34 @@ if ($conn->connect_error) {
 
 if (isset($_POST['tambahberita'])) {
     $judul = $_POST['judul'];
-    $isi_berita = $_POST['isi_berita'];
     $penulis = $_POST['penulis'];
+    $isi_berita = $_POST['isi_berita'];
     $tanggal_publikasi = $_POST['tanggal_publikasi'];
 
-    // Tentukan tabel berdasarkan jenis transportasi
-
-    $stmt = $conn->prepare("INSERT INTO berita (judul, isi_berita, penulis, tanggal_publikasi) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $judul, $isi_berita, $penulis, $tanggal_publikasi);
+    $stmt = $conn->prepare("INSERT INTO berita (judul, penulis, isi_berita, tanggal_publikasi) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $judul, $penulis, $isi_berita, $tanggal_publikasi);
 
     if ($stmt->execute()) {
-        $message = "Berita berhasil ditambahkan.";
+        $message = "Berita berhasil ditambahkan";
     } else {
-        $message = "Error: " . $stmt->error;
+        $message = "Gagal menambahkan berita: " . $stmt->error;
     }
 
     $stmt->close();
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -44,10 +45,10 @@ if (isset($_POST['tambahberita'])) {
                         <li class="nav-item">
                             <a class="nav-link text-white" href="../page/admin.php">Dashboard</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link text-white" href="../page/tambahberita.php">Tambah Berita</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link text-white" href="../page/tambahjadwal.php">Tambah Jadwal</a>
                         </li>
                     </ul>
@@ -56,30 +57,30 @@ if (isset($_POST['tambahberita'])) {
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1 class="h2">Welcome, Admin</h1>
-                    <button class="btn btn-outline-danger">Logout</button>
+                    <a href="../page/deleteberita.php" class="btn btn-outline-danger">Hapus Berita</a>
                 </div>
-                <section id="schedule-section">
+                <section id="news-section">
                     <div class="card shadow-sm">
-                        <div class="card-header bg-warning text-white">
+                        <div class="card-header bg-info text-white">
                             <h3 class="mb-0">Tambah Berita</h3>
                         </div>
                         <div class="card-body">
                             <form action="../page/tambahberita.php" method="post">
                                 <div class="mb-3">
-                                    <label for="noSeri" class="form-label">Judul</label>
+                                    <label for="judul" class="form-label">Judul</label>
                                     <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan judul" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Isi Berita</label>
-                                    <textarea class="form-control" id="isi_berita" name="isi_berita" placeholder="Masukkan isi berita" required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="asal" class="form-label">Penulis</label>
+                                    <label for="penulis" class="form-label">Penulis</label>
                                     <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Masukkan penulis" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="keberangkatan" class="form-label">Tanggal Publikasi</label>
-                                    <input type="date" class="form-control" id="tanggal_publikasi" name="tanggal_publikasi" required>
+                                    <label for="isi_berita" class="form-label">Isi Berita</label>
+                                    <textarea class="form-control" id="isi_berita" name="isi_berita" placeholder="Masukkan isi berita" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tanggal_publikasi" class="form-label">Tanggal Publikasi</label>
+                                    <input type="datetime-local" class="form-control" id="tanggal_publikasi" name="tanggal_publikasi" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary" name="tambahberita">Tambahkan Berita</button>
                             </form>
@@ -95,5 +96,5 @@ if (isset($_POST['tambahberita'])) {
         </div>
     </div>
 </body>
-</html>
 
+</html>
