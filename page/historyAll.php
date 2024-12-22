@@ -1,6 +1,8 @@
 <?php
 require_once 'db/database.php'; // Ensure the database connection is included
 $pageTitle = 'History - iReport';
+$paddingTop = 10; // You can dynamically set this based on conditions
+echo "<style>main { padding-top: {$paddingTop}vh; }</style>";
 
 // Enable error reporting for debugging
 error_reporting(E_ALL);
@@ -37,7 +39,7 @@ $history = fetchUserReportHistory($userId);
                                 <td><?= htmlspecialchars($report['deskripsi_keluhan']) ?></td>
                                 <td><?= htmlspecialchars($report['tanggal_laporan']) ?></td>
                                 <td><?= htmlspecialchars($report['tanggal_perubahan']) ?></td>
-                                <td><a href="viewReport.php?id=<?= urlencode($report['id_laporan']) ?>&type=transportation">View</a></td>
+                                <td><a href="index.php?page=viewReport&id=<?= urlencode($report['id_laporan']) ?>&type=transportation">View</a></td>
                             </tr>
                         <?php endforeach; ?>
                         <?php foreach ($history['location'] as $report): ?>
@@ -47,7 +49,7 @@ $history = fetchUserReportHistory($userId);
                                 <td><?= htmlspecialchars($report['deskripsi_keluhan']) ?></td>
                                 <td><?= htmlspecialchars($report['tanggal_laporan']) ?></td>
                                 <td><?= htmlspecialchars($report['tanggal_perubahan']) ?></td>
-                                <td><a href="viewReport.php?id=<?= urlencode($report['id_laporan']) ?>&type=location">View</a></td>
+                                <td><a href="index.php?page=viewReport&id=<?= urlencode($report['id_laporan']) ?>&type=location">View</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>

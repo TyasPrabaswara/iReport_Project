@@ -42,8 +42,7 @@
             echo '<link rel="stylesheet" href="css/profile.css">';
             break;
         case 'reportTransport':
-            //echo '<link rel="stylesheet" href="css/sidebar.css">';
-            echo '<link rel="stylesheet" href="css/sidebar.css?v=<?php echo time(); ?>">';
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
             echo '<link rel="stylesheet" href="css/report.css">';
             break;
         case 'reportLocation':
@@ -51,6 +50,10 @@
             echo '<link rel="stylesheet" href="css/report.css">';
             break;
         case 'historyAll':
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
+            echo '<link rel="stylesheet" href="css/historyAll.css">';
+            break;
+        case 'viewReport':
             echo '<link rel="stylesheet" href="css/sidebar.css">';
             break;
         case 'settings':
@@ -120,6 +123,10 @@
                     break;
                 case 'admin':
                     $file_path = "page/admin.php";
+                    break;
+                case 'viewReport':
+                    include 'includes/navbarMenuItems.php';
+                    $file_path = "page/viewReport.php";
                     break;
                 
             }

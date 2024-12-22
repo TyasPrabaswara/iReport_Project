@@ -45,3 +45,6 @@ v0.1.28:
 
 v0.1.29
 - added half working history page
+
+v0.1.32
+- history, profile, and viewReport works

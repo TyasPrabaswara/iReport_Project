@@ -47,6 +47,6 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
     }
 } else {
     // If 'id' or 'type' is missing, show an error message
-    echo "Missing report ID or type.";
+    //echo "Missing report ID or type.";
 }
 ?>

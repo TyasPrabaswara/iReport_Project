@@ -1,7 +1,8 @@
 <?php
 // session_start();
 $pageTitle = 'Profile - iReport';
-
+$paddingTop = 10; // You can dynamically set this based on conditions
+echo "<style>main { padding-top: {$paddingTop}vh; }</style>";
 // Koneksi database
 require 'db/database.php';
 
