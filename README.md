@@ -38,3 +38,10 @@ user id is not set in the session
 v0.1.22:
 - submit function for transport finally works
 - submit function for location still need fixing in the js or form
+
+v0.1.28:
+- adding reports to history function is now working
+- viewing report history still unuseable
+
+v0.1.29
+- added half working history page
