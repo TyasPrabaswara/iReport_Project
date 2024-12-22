@@ -14,7 +14,7 @@ user session functionality works
 login and sign up ui borked asf
 
 v0.1.13:
-istg if the files are duped and ends somewhere else again
+files somehow duped and ends up on other folder (fixed)
 
 v0.1.14: fixed login and signup ui and fucntion. report ui broken
 
@@ -30,7 +30,7 @@ v0.1.17:
 masi kaya v0.1.15. bagian my account berantakan banget. bagian laporan harusnya udah bisa masuk ke database, tapi masi kehambat soalnya id usernya bingung diambil dari mana.
 
 v0.1.19:
-- stupid report function doesnt work
+-  report function doesnt work
 
 v0.1.21:
 user id is not set in the session
