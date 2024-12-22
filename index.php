@@ -54,7 +54,7 @@
             break;
         case 'historyAll':
             echo '<link rel="stylesheet" href="css/sidebar.css">';
-            echo '<link rel="stylesheet" href="css/historyAll.css">';
+            // echo '<link rel="stylesheet" href="css/historyAll.css">';
             break;
         case 'settings':
             echo '<link rel="stylesheet" href="css/sidebar.css">';

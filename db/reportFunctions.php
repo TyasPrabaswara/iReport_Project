@@ -292,7 +292,7 @@ function fetchUserReportHistory($userId) {
 
     // Fetch transportation history
     $queryTransport = "
-        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi, rt.resolved_date
+        SELECT rt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi
         FROM riwayat_laporan_transportasi rt
         JOIN laporan_transportasi lt ON rt.id_laporan = lt.id_laporan
         WHERE lt.id_penumpang = '$userId'
@@ -302,7 +302,7 @@ function fetchUserReportHistory($userId) {
 
     // Fetch location history
     $queryLocation = "
-        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi, rl.resolved_date
+        SELECT rl.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi
         FROM riwayat_laporan_lokasi rl
         JOIN laporan_lokasi ll ON rl.id_laporan = ll.id_laporan
         WHERE ll.id_penumpang = '$userId'
@@ -316,5 +316,64 @@ function fetchUserReportHistory($userId) {
         'location' => $locationHistory
     ];
 }
+
+// function fetchUserReportHistory($userId) {
+//     global $conn;
+
+//     // Array untuk menyimpan hasil riwayat
+//     $history = [
+//         'transportation' => [],
+//         'location' => []
+//     ];
+
+//     // Query untuk riwayat laporan transportasi
+//     $queryTransport = "
+//         SELECT lt.id_laporan, lt.jenis_keluhan, lt.deskripsi_keluhan, lt.tanggal_laporan, lt.id_transportasi
+//         FROM laporan_transportasi lt
+//         WHERE lt.id_penumpang = ?
+//     ";
+
+//     // Prepared statement untuk laporan transportasi
+//     $stmtTransport = $conn->prepare($queryTransport);
+//     if ($stmtTransport) {
+//         $stmtTransport->bind_param("s", $userId);
+//         $stmtTransport->execute();
+//         $resultTransport = $stmtTransport->get_result();
+
+//         if ($resultTransport) {
+//             $history['transportation'] = $resultTransport->fetch_all(MYSQLI_ASSOC);
+//         }
+
+//         $stmtTransport->close();
+//     } else {
+//         die("Error in preparing query for transportation: " . $conn->error);
+//     }
+
+//     // Query untuk riwayat laporan lokasi
+//     $queryLocation = "
+//         SELECT ll.id_laporan, ll.jenis_keluhan, ll.deskripsi_keluhan, ll.tanggal_laporan, ll.id_lokasi
+//         FROM laporan_lokasi ll
+//         WHERE ll.id_penumpang = ?
+//     ";
+
+//     // Prepared statement untuk laporan lokasi
+//     $stmtLocation = $conn->prepare($queryLocation);
+//     if ($stmtLocation) {
+//         $stmtLocation->bind_param("s", $userId);
+//         $stmtLocation->execute();
+//         $resultLocation = $stmtLocation->get_result();
+
+//         if ($resultLocation) {
+//             $history['location'] = $resultLocation->fetch_all(MYSQLI_ASSOC);
+//         }
+
+//         $stmtLocation->close();
+//     } else {
+//         die("Error in preparing query for location: " . $conn->error);
+//     }
+
+//     return $history;
+// }
+
 
 ?>
