@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2024 at 03:42 AM
+-- Generation Time: Dec 22, 2024 at 04:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -150,7 +150,10 @@ CREATE TABLE `laporan_lokasi` (
 --
 
 INSERT INTO `laporan_lokasi` (`id_laporan`, `id_penumpang`, `jenis_keluhan`, `deskripsi_keluhan`, `tanggal_laporan`, `id_lokasi`, `media_laporan`) VALUES
-(1, 8, 'kerusakan', 'das', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
+(1, 8, 'kerusakan', 'das', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(2, 10, 'kebersihan', 'cbvcbv', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(3, 10, 'kerusakan', 'asd', '2024-12-28', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(4, 10, 'kebersihan', 'Vickers Test Location', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
 
 -- --------------------------------------------------------
 
@@ -196,7 +199,15 @@ INSERT INTO `laporan_transportasi` (`id_laporan`, `id_penumpang`, `jenis_keluhan
 (21, 8, 'kerusakan', 'asd vvvv', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
 (22, 8, 'kerusakan', 'vvvvvvvvvvvvvvvvvvvvvvvvv', '2024-12-31', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
 (23, 8, 'kebersihan', 'annnnnnnnnnnnnnnnnnnnnn', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
-(24, 8, 'kerusakan', 'asdasdasdasdfnmhfhngmg rehga', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
+(24, 8, 'kerusakan', 'asdasdasdasdfnmhfhngmg rehga', '2024-12-21', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(25, 10, 'kerusakan', 'balling', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(26, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(27, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(28, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(29, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(30, 10, 'kerusakan', 'History Test Vickers', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(31, 10, 'kerusakan', 'History Transportation Vickers Test', '2024-12-22', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg'),
+(32, 10, 'kerusakan', 'adsadsadsds', '2024-12-31', 1, '/opt/lampp/htdocs/iReport_Project/db/../uploads/8a14e1e2-d86c-4cde-80bb-3036daebeec5-1703558289382.jpg');
 
 -- --------------------------------------------------------
 
@@ -228,8 +239,16 @@ CREATE TABLE `riwayat_laporan_lokasi` (
   `id_laporan` int(11) NOT NULL,
   `id_penumpang` int(11) NOT NULL,
   `tanggal_perubahan` date NOT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL DEFAULT 'UNRESOLVED'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `riwayat_laporan_lokasi`
+--
+
+INSERT INTO `riwayat_laporan_lokasi` (`id_riwayat`, `id_laporan`, `id_penumpang`, `tanggal_perubahan`, `status`) VALUES
+(1, 3, 10, '2024-12-28', 'UNRESOLVED'),
+(2, 4, 10, '2024-12-22', 'UNRESOLVED');
 
 -- --------------------------------------------------------
 
@@ -242,8 +261,16 @@ CREATE TABLE `riwayat_laporan_transportasi` (
   `id_laporan` int(11) NOT NULL,
   `id_penumpang` int(11) NOT NULL,
   `tanggal_perubahan` date NOT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL DEFAULT 'UNRESOLVED'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `riwayat_laporan_transportasi`
+--
+
+INSERT INTO `riwayat_laporan_transportasi` (`id_riwayat`, `id_laporan`, `id_penumpang`, `tanggal_perubahan`, `status`) VALUES
+(1, 31, 10, '2024-12-22', 'UNRESOLVED'),
+(2, 32, 10, '2024-12-31', 'UNRESOLVED');
 
 -- --------------------------------------------------------
 
@@ -381,13 +408,13 @@ ALTER TABLE `dishub`
 -- AUTO_INCREMENT for table `laporan_lokasi`
 --
 ALTER TABLE `laporan_lokasi`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `laporan_transportasi`
 --
 ALTER TABLE `laporan_transportasi`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
@@ -399,13 +426,13 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `riwayat_laporan_lokasi`
 --
 ALTER TABLE `riwayat_laporan_lokasi`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `riwayat_laporan_transportasi`
 --
 ALTER TABLE `riwayat_laporan_transportasi`
-  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_riwayat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transportasi`
