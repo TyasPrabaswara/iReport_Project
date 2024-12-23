@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2024 at 07:03 PM
+-- Generation Time: Dec 23, 2024 at 03:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,9 @@ INSERT INTO `berita` (`id_berita`, `judul`, `isi_berita`, `penulis`, `tanggal_pu
 (2, 'Dishub DIY Berkomitmen Wujudkan Sarana Prasarana Transportasi Umum Ramah Disabilitas\r\n', 'Yogyakarta - Masih banyaknya fasilitas transportasi umum yang belum ramah disabilitas dan berbagai kendala di lapangan menjadi perhatian Dinas Perhubungan DIY. Hal tersebut disampaikan oleh Sekretaris Dinas Perhubungan DIY, Nunik Arzakiyah saat membuka Sosialisasi Urusan Perhubungan dengan tema Layanan Transportasi yang Ramah Disabilitas pada Rabu, 23 Oktober 2024 di Ruang Rapat Kendalisodo Kantor Dinas Perhubungan DIY. \r\n\r\nPertemuan untuk membahas peningkatan aksesibilitas transportasi publik, khususnya layanan Trans Jogja dan Teman Bus ini diselenggarakan oleh Dinas Perhubungan DIY dan melibatkan berbagai pihak, termasuk dari Forum Komunikasi Difabel DIY, Ombudsman, PT. AMI, serta PT. JTT', ' Contributor Dishub - Dishub DIY', '2024-12-19'),
 (3, 'Sembilan Stasiun Kereta Api di Yogyakarta - Solo Sudah Terintegrasi Dengan Moda Transportasi Lain', 'TEMPO.CO, Yogykarta - Sebanyak sembilan stasiun kereta api yang berada di Daerah Operasi atau Daop 6 Yogyakarta sudah terintegrasi dengan moda transportasi lainnya, baik kereta api jarak jauh, kereta bandara, dan bus. Integrasi ini mempermudah mobilitas masyarakat pengguna jasa PT Kereta Api Indonesia (KAI) yang semakin dinamis.\r\n\r\nKrisbiyantoro, Manager Humas Daop 6 Yogyakarta, mengatakan bahwa inovasi yang dilakukan Daop 6 ini sebagai upaya mendukung pembangunan berkelanjutan, selaras dengan tema HUT ke-79 KAI yaitu Safety and Sustainability. \"Daop 6 secara konsisten menciptakan akses ke transportasi umum lainnya secara aman, efisien, tetap menjaga lingkungan, dan mendukung kesejahteraan sosial-ekonomi di berbagai daerah,” kata Krisbiyantoro, Kamis, 26 September 2024.', 'ATENG', '2024-12-19'),
 (4, 'Test Berita 1', 'Test konten berita 1ewe', 'admin', '2024-12-21'),
-(5, 'q3', '121', '122', '2024-12-23');
+(5, 'q3', '121', '122', '2024-12-23'),
+(7, '123', '123', '123', '2024-12-23'),
+(8, '123', '123', '123', '2024-12-23');
 
 -- --------------------------------------------------------
 
@@ -221,6 +223,35 @@ INSERT INTO `lokasi` (`id_lokasi`, `nama_lokasi`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengaduan`
+--
+
+CREATE TABLE `pengaduan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `tel` int(20) NOT NULL,
+  `tanggal` date NOT NULL,
+  `pesan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pengaduan`
+--
+
+INSERT INTO `pengaduan` (`id`, `nama`, `email`, `tel`, `tanggal`, `pesan`) VALUES
+(1, 'apa', 'mau', 123, '2024-12-23', 'qwert'),
+(2, '123', '123@gmail.com', 123, '2024-12-23', '123'),
+(3, '123', '123@gmail.com', 123, '2024-12-23', '123'),
+(4, '123', '123@gmail.com', 122, '2024-12-23', '123'),
+(5, '123', '123@gmail.com', 123, '2024-12-23', '123'),
+(6, '124', '123@gmail.com', 123, '2024-12-23', '123'),
+(7, '111', '111@gmail.com', 111, '2024-12-23', '122'),
+(8, '12312', '123@gmail.com', 123, '2024-12-23', '1221');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `riwayat_laporan_lokasi`
 --
 
@@ -356,6 +387,12 @@ ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id_lokasi`);
 
 --
+-- Indexes for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `riwayat_laporan_lokasi`
 --
 ALTER TABLE `riwayat_laporan_lokasi`
@@ -391,7 +428,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `Bus`
@@ -434,6 +471,12 @@ ALTER TABLE `laporan_transportasi`
 --
 ALTER TABLE `lokasi`
   MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `riwayat_laporan_lokasi`
