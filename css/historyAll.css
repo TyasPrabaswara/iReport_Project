@@ -41,7 +41,13 @@ body {
 /* Container */
 .container {
   display: flex;
-  min-height: calc(100vh - 64px);
+  /* min-height: calc(100vh - 64px); */
+}
+
+
+.sidebar {
+  margin-bottom: 5vh;
+  margin-top: 0;
 }
 
 /* Sidebar */

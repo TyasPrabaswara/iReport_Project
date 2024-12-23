@@ -17,7 +17,7 @@ include __DIR__ . '/../db/database.php';
   <section class="daily-news">
     <?php
     $sql = 'SELECT * FROM keretaApi';
-    $result = $connect->query($sql); ?>
+    $result = $conn->query($sql); ?>
     <div class="container">
       <h2 class="text-start">Kereta Bandara</h2>
 
@@ -54,7 +54,7 @@ include __DIR__ . '/../db/database.php';
   <section class="daily-news">
     <?php
     $sql = 'SELECT * FROM KRL';
-    $result = $connect->query($sql); ?>
+    $result = $conn->query($sql); ?>
     <div class="container">
       <h2 class="text-start">Kereta Lokal</h2>
 
@@ -114,7 +114,7 @@ include __DIR__ . '/../db/database.php';
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
               echo "<tr>";
-              echo "<td>" . htmlspecialchars($row['noSeri']) . "</td>";
+              echo "<td>" . htmlspecialchars($row['noPlat']) . "</td>";
               echo "<td>" . htmlspecialchars($row['nama']) . "</td>";
               echo "<td>" . htmlspecialchars($row['asal']) . "</td>";
               echo "<td>" . htmlspecialchars($row['tujuan']) . "</td>";
