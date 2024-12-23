@@ -15,9 +15,9 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    include 'db/database.php';
-    include 'db/userFunctions.php';
-    include 'db/reportFunctions.php';
+    // include 'db/database.php';
+    // include 'db/userFunctions.php';
+    // include 'db/reportFunctions.php';
 
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -62,7 +62,7 @@
             break;
         case 'customerService':
             echo '<link rel="stylesheet" href="css/sidebar.css">';
-            echo '<link rel="stylesheet" href="css/customerService.css">';
+            // echo '<link rel="stylesheet" href="css/customerService.css">';
             break;
 
         default:

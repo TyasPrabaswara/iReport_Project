@@ -7,7 +7,7 @@ html, body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #f5f5f5;
-  /* margin-top: 10vh; */
+  margin-top: 10vh;
   height: 100%;
   padding-top: 1vh; /* Added to ensure content below navbar is not covered */
   margin: 0;
@@ -75,7 +75,7 @@ transform: rotate(45deg) translate(-5px, -6px);
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  /* padding: 2rem; */
+  padding: 2rem;
 }
 
 .daily-news h2 {

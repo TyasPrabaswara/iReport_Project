@@ -1,5 +1,5 @@
 <?php
-include 'database.php'; // Include the database connection
+// include 'database.php'; // Include the database connection
 
 function regist($data) {
     global $conn;
