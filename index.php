@@ -140,6 +140,12 @@
                 case 'editCS':
                     $file_path = "page/editCS.php";
                     break;
+                case 'tambahberita':
+                    $file_path = "page/tambahberita.php";
+                    break;
+                case 'tambahjadwal':
+                    $file_path = "page/tambahjadwal.php";
+                    break;
             }
         }
 

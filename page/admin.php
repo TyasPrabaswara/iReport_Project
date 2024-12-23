@@ -50,7 +50,6 @@ if (isset($_GET['jenisTransportasi'])) {
                         <li>
                             <a class="nav-link text-white" href="index.php?page=editCS">Customer Service</a>
                         </li>
-
                     </ul>
                 </div>
             </nav>
@@ -65,11 +64,11 @@ if (isset($_GET['jenisTransportasi'])) {
                 </div>
 
                 <!-- Tambah Berita -->
-                <a href="tambahberita.php" class="btn btn-primary btn-lg ">Tambah Berita</a>
+                <a href="index.php?page=tambahberita" class="btn btn-primary btn-lg ">Tambah Berita</a>
                 <!-- Tambah Jadwal -->
-                <a href="tambahjadwal.php" class="btn btn-primary btn-lg ms-5">Tambah Jadwal</a>
+                <a href="index.php?page=tambahjadwal" class="btn btn-primary btn-lg ms-5">Tambah Jadwal</a>
 
-                <a href="editCS.php" class="btn btn-primary btn-lg ms-5">Custumer Service</a>
+                <a href="index.php?page=editCS" class="btn btn-primary btn-lg ms-5">Custumer Service</a>
 
                 <form></form>
             </main>
