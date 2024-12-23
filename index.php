@@ -15,9 +15,9 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    // include 'db/database.php';
-    // include 'db/userFunctions.php';
-    // include 'db/reportFunctions.php';
+     include 'db/database.php';
+     include 'db/userFunctions.php';
+     include 'db/reportFunctions.php';
 
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -127,6 +127,12 @@
                 case 'viewReport':
                     include 'includes/navbarMenuItems.php';
                     $file_path = "page/viewReport.php";
+                    break;
+                case 'tambahberita':
+                    $file_path = "page/tambahberita.php";
+                    break;
+                case 'dashboard':
+                    $file_path = "page/dashboard.php";
                     break;
                 
             }

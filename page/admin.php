@@ -39,7 +39,7 @@ if (isset($_GET['jenisTransportasi'])) {
                     <h2 class="text-center text-light">Admin Dashboard</h2>
                     <ul class="nav flex-column mt-4 w-100">
                         <li class="nav-item active">
-                            <a class="nav-link text-white" href="admin.php">Dashboard</a>
+                            <a class="nav-link text-white" href="index.php?page=admin">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="deleteberita.php">Berita</a>

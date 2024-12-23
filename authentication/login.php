@@ -3,7 +3,7 @@ $pageTitle = 'Login - iReport';
 //$additionalCSS = ['login.css'];
 //session_start();
 
-// require 'db/database.php';
+require_once 'db/database.php';
 
 if (isset($_POST['login'])) {
 

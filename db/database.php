@@ -1,16 +1,16 @@
 <?php
 // connect to database
-$hostname = "localhost";
+$hostname = "db";
 $dbname = "ireport";     // Sesuaikan dengan nama database
-$username = "root";      // Sesuaikan dengan username MySQL
-$password = "";          // Sesuaikan dengan password MySQL
+$username = "ireportUser";      // Sesuaikan dengan username MySQL
+$password = "ireportUserPassword";          // Sesuaikan dengan password MySQL
 
 // Create connection
 $conn = mysqli_connect($hostname, $username, $password, $dbname);
 
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if (!$conn){
+  die("Connection failed: " . mysqli_connect_error());
 }
 
 /*
