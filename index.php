@@ -146,6 +146,9 @@
                 case 'tambahjadwal':
                     $file_path = "page/tambahjadwal.php";
                     break;
+                case 'aboutUs':
+                    $file_path = "page/aboutUs.php";
+                    break;
             }
         }
 
