@@ -1,0 +1,13 @@
+services:
+  web:
+    image: ireport_apache_image
+    container_name: webserver
+    ports:
+      - "80:80"
+    volumes:
+      - C:\Users\PREDATOR\Documents\File Kuliah\Project\Semester 3\iReport\webfolder:/var/www/html
+    networks:
+      - appireport
+networks:
+  appireport:
+    external: true
