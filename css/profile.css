@@ -11,8 +11,13 @@ body {
   line-height: 1.5;
 }
 
+/* Main Content Styles */
+
 .container {
   display: flex;
+  min-height: 100vh;
+  padding: 0;
+  /* display: flex; */
   /* min-height: 60vh; */
   /* max-width: 1000px; */
   /* margin: 40px auto; */
@@ -23,9 +28,13 @@ body {
 }
 
 .main-content {
+  flex: 1;
+  /* margin-left: 250px; */
+  padding: 40px;
+  max-width: 800px;
   background: white;
   border-radius: 12px;
-  padding: 32px;
+  /* padding: 32px; */
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 

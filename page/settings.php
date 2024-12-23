@@ -4,7 +4,7 @@ $pageTitle = 'Settings - iReport';
 
 ?>
 <body>
-    <div class="container">
+    <div class="container mt-5 pt-5">
         <nav class="settings-nav">
             <div class="settings-item" data-section="general">
                 <h2>General</h2>

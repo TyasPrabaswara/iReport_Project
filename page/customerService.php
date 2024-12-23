@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <div class="container my-5">
+    <div class="container my-5 card pt-4 pl-4 pr-4 pb-5">
         <div class="text-center mb-4">
             <h1>Welcome to Customer Service</h1>
             <p>We are here to assist you. Please feel free to contact us or check our FAQ section.</p>
@@ -89,9 +89,9 @@ if (isset($_POST['submit'])) {
                 <h2>Support</h2>
                 <p>If you have any questions or need further assistance, please reach out to us through the following channels:</p>
                 <ul>
-                    <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
-                    <li>Phone: <a href="tel:+621234567890">+62 123 456 7890</a></li>
-                    <li>Live Chat: Available 24/7</li>
+                    <li>Email: <a href="mailto:support@example.com">support@ireport.com</a></li>
+                    <li>Phone: <a href="tel:0274-1234567">0274-1234567</a></li>
+                    <li>Service hours (8:00 AM - 8:00 PM).</li>
                 </ul>
             </div>
         </div>

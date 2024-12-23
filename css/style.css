@@ -75,7 +75,7 @@ transform: rotate(45deg) translate(-5px, -6px);
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 .daily-news h2 {

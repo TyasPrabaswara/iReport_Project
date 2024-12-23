@@ -12,13 +12,14 @@ body {
   max-width: 1000px;
   margin: 50px auto;
   padding: 2rem;
+  
 }
 
 .settings-nav {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  /* width: 70%; */
+  width: 100vh;
 }
 
 .settings-item {

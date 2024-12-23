@@ -52,3 +52,8 @@ v0.1.32
 
 v0.1.34
 - tinggal rapihin cssnya
+
+v0.1.36
+- tidak semudah itu ferguso, belom bisa edit profile
+- css deretan my account udah aman insyaAllah
+- plis males banget bikin about us
