@@ -42,10 +42,13 @@ if (isset($_GET['jenisTransportasi'])) {
                             <a class="nav-link text-white" href="admin.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="tambahberita.php">Tambah Berita</a>
+                            <a class="nav-link text-white" href="deleteberita.php">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deletejadwal.php">Tambah Jadwal</a>
+                            <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-white" href="editCS.php">Customer Service</a>
                         </li>
 
                     </ul>
@@ -65,6 +68,8 @@ if (isset($_GET['jenisTransportasi'])) {
                 <a href="tambahberita.php" class="btn btn-primary btn-lg ">Tambah Berita</a>
                 <!-- Tambah Jadwal -->
                 <a href="tambahjadwal.php" class="btn btn-primary btn-lg ms-5">Tambah Jadwal</a>
+
+                <a href="editCS.php" class="btn btn-primary btn-lg ms-5">Custumer Service</a>
 
                 <form></form>
             </main>

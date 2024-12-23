@@ -42,7 +42,7 @@ if (isset($_GET['msg'])) {
     <div class="container-fluid">
         <!-- Sidebar -->
         <div class="row">
-            <nav class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+            <nav class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh">
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-center text-light">Admin Dashboard</h2>
                     <ul class="nav flex-column mt-4 w-100">
@@ -50,11 +50,15 @@ if (isset($_GET['msg'])) {
                             <a class="nav-link text-white" href="admin.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="tambahberita.php">Tambah Berita</a>
+                            <a class="nav-link text-white" href="deleteberita.php">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deletejadwal.php">Tambah Jadwal</a>
+                            <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
                         </li>
+                        <li>
+                            <a class="nav-link text-white" href="editCS.php">Customers Service</a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>

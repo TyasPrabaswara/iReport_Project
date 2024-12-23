@@ -51,10 +51,13 @@ if (isset($_POST['update'])) {
                         <a class="nav-link text-white" href="admin.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="tambahberita.php">Tambah Berita</a>
+                        <a class="nav-link text-white" href="deleteberita.php">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="deletejadwal.php">Tambah Jadwal</a>
+                        <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white" href="editCS.php">Customers Service</a>
                     </li>
 
                 </ul>

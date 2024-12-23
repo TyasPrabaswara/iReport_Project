@@ -1,36 +1,45 @@
 <?php
-$pageTitle = 'Customer Service - iReport';
-$paddingTop = 10; // You can dynamically set this based on conditions
-echo "<style>main { padding-top: {$paddingTop}vh; }</style>";
-// Koneksi database
 include __DIR__ . '/../db/database.php';
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
-$successMessage = '';
-$errorMessage = 'gagal';
+// Mengatur padding dinamis jika diperlukan
+$paddingTop = 0;
+echo "<style>main { padding-top: {$paddingTop}vh; }</style>";
 
-if (isset($_POST['submit'])) {
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
-    $tel = $_POST['tel'];
-    $tanggal = $_POST['tanggal'];
-    $pesan = $_POST['pesan'];
+// Proses pengajuan keluhan
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajukankeluhan'])) {
+    $nama = trim($_POST['nama']);
+    $email = trim($_POST['email']);
+    $tel = trim($_POST['telephone']);
+    $pesan = trim($_POST['pesan']);
+    $tanggal = trim($_POST['tanggal']);
 
-    $sql = "INSERT INTO pengaduan (nama, email, tel, tanggal, pesan) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $nama, $email, $tel, $tanggal, $pesan);
+    if (!empty($nama) && !empty($email) && !empty($tel) && !empty($pesan) && !empty($tanggal)) {
+        $sql = "INSERT INTO pengaduan (nama, email, tel, tanggal, pesan) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
 
-    if ($stmt->execute()) {
-        $successMessage = "Pengaduan berhasil dikirim!";
+        if ($stmt) {
+            $stmt->bind_param("sssss", $nama, $email, $tel, $tanggal, $pesan);
+            if ($stmt->execute()) {
+                $message = "Keluhan berhasil dikirimkan!";
+                $feedbackType = "success";
+            } else {
+                $message = "Gagal mengajukan keluhan: " . $stmt->error;
+                $feedbackType = "danger";
+            }
+            $stmt->close();
+        } else {
+            $message = "Kesalahan pada pernyataan SQL: " . $conn->error;
+            $feedbackType = "danger";
+        }
     } else {
-        $errorMessage = "Gagal mengirim pengaduan: " . $stmt->error;
+        $message = "Semua kolom wajib diisi.";
+        $feedbackType = "danger";
     }
-
-    $stmt->close();
 }
+
+// Pesan umpan balik
+$feedbackMessage = isset($message) ? "<div class='alert alert-$feedbackType text-center'>$message</div>" : "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,60 +47,90 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle; ?></title>
-    <link href="../css/bootstrap.css" rel="stylesheet">
+    <title>Customer Service</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container my-5 card pt-4 pl-4 pr-4 pb-5">
-        <div class="text-center mb-4">
-            <h1>Welcome to Customer Service</h1>
-            <p>We are here to assist you. Please feel free to contact us or check our FAQ section.</p>
-        </div>
+    <div class="container my-5">
 
-        <!-- <?php if (!empty($successMessage)) : ?>
-            <div class="alert alert-success"> <?php echo $successMessage; ?> </div>
-        <?php endif; ?>
 
-        <?php if (!empty($errorMessage)) : ?>
-            <div class="alert alert-danger"> <?php echo $errorMessage; ?> </div>
-        <?php endif; ?> -->
+        <!-- Pesan Umpan Balik -->
+        <?= isset($feedbackMessage) ? $feedbackMessage : '' ?>
 
         <div class="row">
-            <div class="col-md-6">
-                <h2>Contact Us</h2>
-                <form id="contact" method="POST" action="">
+            <div class="text-center mb-4">
+                <h1 class="display-5">Customer Service</h1>
+                <p class="lead">Kami siap membantu Anda. Silakan ajukan pertanyaan atau keluhan Anda melalui formulir di bawah.</p>
+            </div>
+            <!-- Formulir Pengaduan -->
+            <div class="col-md-6 mb-4">
+                <h3 class="mb-4">Ajukan Keluhan</h3>
+                <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="nama" placeholder="Your Name" required>
+                        <label for="nama" class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email Anda" required>
                     </div>
                     <div class="mb-3">
-                        <label for="telephone" class="form-label">Telephone</label>
-                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Your Telephone" required>
+                        <label for="telephone" class="form-label">Nomor Telepon</label>
+                        <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Masukkan nomor telepon Anda" required>
                     </div>
                     <div class="mb-3">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="date" name="date" required>
+                        <label for="tanggal" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <label for="pesan" class="form-label">Pesan</label>
+                        <textarea class="form-control" id="pesan" name="pesan" rows="5" placeholder="Tulis keluhan Anda di sini" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" name="submit">Send Message</button>
+                    <button type="submit" class="btn btn-primary" name="ajukankeluhan">Ajukan Keluhan</button>
                 </form>
             </div>
 
+            <!-- FAQ -->
             <div class="col-md-6">
-                <h2>Support</h2>
-                <p>If you have any questions or need further assistance, please reach out to us through the following channels:</p>
-                <ul>
-                    <li>Email: <a href="mailto:support@example.com">support@ireport.com</a></li>
-                    <li>Phone: <a href="tel:0274-1234567">0274-1234567</a></li>
-                    <li>Service hours (8:00 AM - 8:00 PM).</li>
+                <h3 class="mb-4">FAQ</h3>
+                <div class="accordion mb-4" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1Header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                Bagaimana cara mengajukan keluhan?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1Header">
+                            <div class="accordion-body">
+                                Anda dapat mengisi formulir keluhan di sebelah kiri dan mengirimkannya. Tim kami akan meninjau dan menghubungi Anda.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2Header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                Berapa lama waktu tanggapan?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Header">
+                            <div class="accordion-body">
+                                Kami biasanya memberikan tanggapan dalam waktu 1-2 hari kerja.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Kontak Kami</h3>
+                <ul class="list-unstyled">
+                    <li>Email: <a href="mailto:customer@example.com">customer@example.com</a></li>
+                    < li>Telepon: <a href="tel:+6201234567890">+62 012 3456 7890</a></li>
+                        <li>Live Chat: Tersedia 24/7 di website ini</li>
                 </ul>
             </div>
         </div>
