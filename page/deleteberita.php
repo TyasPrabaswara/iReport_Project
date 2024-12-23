@@ -46,19 +46,18 @@ if (isset($_GET['msg'])) {
                 <div class="d-flex flex-column align-items-center">
                     <h2 class="text-center text-light">Admin Dashboard</h2>
                     <ul class="nav flex-column mt-4 w-100">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white" href="admin.php">Dashboard</a>
+                    <li class="nav-item active">
+                            <a class="nav-link text-white" href="index.php?page=dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deleteberita.php">Berita</a>
+                            <a class="nav-link text-white" href="index.php?page=deleteberita">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
+                            <a class="nav-link text-white" href="index.php?page=deletejadwal">Jadwal</a>
                         </li>
                         <li>
-                            <a class="nav-link text-white" href="editCS.php">Customers Service</a>
+                            <a class="nav-link text-white" href="index.php?page=editCS">Customer Service</a>
                         </li>
-
                     </ul>
                 </div>
             </nav>
@@ -67,7 +66,7 @@ if (isset($_GET['msg'])) {
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Hapus Berita</h1>
-                    <a class="btn btn-primary" href="tambahberita.php">Tambah Berita</a>
+                    <a class="btn btn-primary" href="index.php?page=tambahberita">Tambah Berita</a>
                 </div>
                 <div class="container">
                     <div class="row">
