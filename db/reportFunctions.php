@@ -53,10 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>";
         }
     } else {
-        echo "<script>
+        /*echo "<script>
         alert('No form identifier provided.');
         window.location.href = '/iReport_Project/index.php?page=reportLocation';
-        </script>";
+        </script>";*/
     }
 }
 

@@ -14,10 +14,10 @@
         
         <div class="footer-links">
             <a href="index.php?page=aboutUs" class="footer-link">about us</a>
-            <a href="/how-to-report" class="footer-link">how to report</a>
-            <a href="/faq" class="footer-link">FAQ</a>
-            <a href="/terms" class="footer-link">terms & conditions</a>
-            <a href="/privacy" class="footer-link">privacy policy</a>
+            <a href="index.php?page=index" class="footer-link">how to report</a>
+            <a href="index.php?page=customerService" class="footer-link">FAQ</a>
+            <a href="index.php?page=customerService" class="footer-link">terms & conditions</a>
+            <a href="index.php?page=customerService" class="footer-link">privacy policy</a>
         </div>
     </div>
     

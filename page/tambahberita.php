@@ -43,16 +43,16 @@ if (isset($_POST['tambahberita'])) {
                     <h2 class="text-center text-light">Admin Dashboard</h2>
                     <ul class="nav flex-column mt-4 w-100">
                         <li class="nav-item active">
-                            <a class="nav-link text-white" href="admin.php">Dashboard</a>
+                            <a class="nav-link text-white" href="index.php?page=dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deleteberita.php">Berita</a>
+                            <a class="nav-link text-white" href="index.php?page=deleteberita">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
+                            <a class="nav-link text-white" href="index.php?page=deletejadwal">Jadwal</a>
                         </li>
                         <li>
-                            <a class="nav-link text-white" href="editCS.php">Customers Service</a>
+                            <a class="nav-link text-white" href="index.php?page=editCS">Customers Service</a>
                         </li>
 
                     </ul>
@@ -61,7 +61,7 @@ if (isset($_POST['tambahberita'])) {
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h1 class="h2">Welcome, Admin</h1>
-                    <a href="../page/deleteberita.php" class="btn btn-outline-danger">Hapus Berita</a>
+                    <a href="index.php?page=deleteberita" class="btn btn-outline-danger">Hapus Berita</a>
                 </div>
                 <section id="news-section">
                     <div class="card shadow-sm">
@@ -69,7 +69,7 @@ if (isset($_POST['tambahberita'])) {
                             <h3 class="mb-0">Tambah Berita</h3>
                         </div>
                         <div class="card-body">
-                            <form action="../page/tambahberita.php" method="post">
+                            <form action="index.php?page=tambahberita" method="post">
                                 <div class="mb-3">
                                     <label for="judul" class="form-label">Judul</label>
                                     <input type="text" class="form-control" id="judul" name="judul" placeholder="Masukkan judul" required>
