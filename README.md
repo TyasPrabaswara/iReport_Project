@@ -1,14 +1,7 @@
 Group Project for 3rd Semester
 
 #NOTE:
-1. apache folder to be taken out into container folder
-    example:
-   container_name
-      -> webfolder
-          |
-          |-> iReport_Project (this repo)
-      -> apache/
-      -> mariadb/
+1. apache folder to be taken out into container folder and not resides inside the repo
 
 documentations:
 v0.1.0 - v0.1.9:
