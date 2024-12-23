@@ -128,13 +128,18 @@
                     include 'includes/navbarMenuItems.php';
                     $file_path = "page/viewReport.php";
                     break;
-                case 'tambahberita':
-                    $file_path = "page/tambahberita.php";
+                case 'deletejadwal':
+                    $file_path = "page/deleteberita.php";
                     break;
                 case 'dashboard':
                     $file_path = "page/dashboard.php";
                     break;
-                
+                case 'deleteberita':
+                    $file_path = "page/deleteberita.php";
+                    break;
+                case 'editCS':
+                    $file_path = "page/editCS.php";
+                    break;
             }
         }
 

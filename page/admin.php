@@ -42,13 +42,13 @@ if (isset($_GET['jenisTransportasi'])) {
                             <a class="nav-link text-white" href="index.php?page=admin">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deleteberita.php">Berita</a>
+                            <a class="nav-link text-white" href="index.php?page=deleteberita">Berita</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
+                            <a class="nav-link text-white" href="index.php?page=deletejadwal">Jadwal</a>
                         </li>
                         <li>
-                            <a class="nav-link text-white" href="editCS.php">Customer Service</a>
+                            <a class="nav-link text-white" href="index.php?page=editCS">Customer Service</a>
                         </li>
 
                     </ul>
