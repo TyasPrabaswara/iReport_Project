@@ -47,5 +47,180 @@ $pageTitle = 'Home - iReport';
             </a>
         </div>
     </section>
-    <!-- <script src="script.js"></script> -->
-</main>
+    <?php
+        $sql = 'SELECT * FROM berita';
+        $result = $conn->query($sql);
+        ?>
+        <section class="daily-news">
+            <div class="container">
+                <h2><strong>Daily News</strong></h2>
+
+                <!-- Featured News Carousel -->
+                <?php if ($result->num_rows > 0): ?>
+                    <div id="newsCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <?php
+                            $isActive = true; // Menandai slide pertama sebagai aktif
+                            while ($row = $result->fetch_assoc()):
+                            ?>
+                                <div class="carousel-item <?= $isActive ? 'active' : '' ?>">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-6">
+                                            <img src="img/kereta.jpg" alt="News Image" class="d-block w-100">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><small>Ditulis oleh: <?= htmlspecialchars($row['penulis']) ?> | Tanggal: <?= htmlspecialchars($row['tanggal_publikasi']) ?></small></p>
+                                            <h3><?= htmlspecialchars($row['judul']) ?></h3>
+                                            <p><?= nl2br(htmlspecialchars(substr($row['isi_berita'], 0, 300))) ?>...</p>
+                                            <a href="detail.php?id=<?= $row['id_berita'] ?>" class="btn btn-primary">Read more →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                                $isActive = false; // Setelah slide pertama, ubah status aktif
+                            endwhile;
+                            ?>
+                        </div>
+                        <!-- Carousel Controls -->
+                        <button class="carousel-control-prev custom-carousel-btn" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next custom-carousel-btn" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                        <style>
+                            .carousel-control-prev:hover,
+                            .carousel-control-next:hover {
+                                background-color: rgba(0, 0, 0, 0.5);
+                            }
+                        </style>
+                    </div>
+                <?php else: ?>
+                    <p>Tidak ada berita tersedia.</p>
+                <?php endif; ?>
+            </div>
+        </section>
+        <main>
+        <h2 style="text-align: center;"><strong>Daily Schedule</strong></h2>
+
+        <section class="daily-news">
+            <?php
+            $sql = 'SELECT * FROM keretaApi LIMIT 5';
+            $result = $conn->query($sql); ?>
+            <div class="container">
+                <h2 class="text-start">Kereta Api</h2>
+
+
+                <table class="table table-hover">
+                    <thead class="table table-primary">
+                        <tr>
+                            <th scope="col">Nomor Seri</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Asal</th>
+                            <th scope="col">Tujuan</th>
+                            <th scope="col">Keberangkatan</th>
+                            <th scope="col">Kedatangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['noSeri']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['nama']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['asal']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['tujuan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['keberangkatan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['kedatangan']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='6'>Tidak ada jadwal tersedia.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+        </section>
+        <section class="daily-news">
+            <?php
+            $sql = 'SELECT * FROM KRL LIMIT 5';
+            $result = $conn->query($sql); ?>
+            <div class="container">
+                <h2 class="text-start">KRL</h2>
+
+
+                <table class="table table-hover">
+                    <thead class="table table-primary">
+                        <tr>
+                            <th scope="col">Nomor Seri</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Asal</th>
+                            <th scope="col">Tujuan</th>
+                            <th scope="col">Keberangkatan</th>
+                            <th scope="col">Kedatangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['noSeri']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['nama']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['asal']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['tujuan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['keberangkatan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['kedatangan']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='6'>Tidak ada jadwal tersedia.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+        </section>
+        <section class="daily-news mb-5">
+            <?php
+            $sql = 'SELECT * FROM Bus LIMIT 5';
+            $result = $conn->query($sql); ?>
+            <div class="container">
+                <h2 class="text-start">Bus</h2>
+
+                <table class="table table-hover">
+                    <thead class="table table-primary">
+                        <tr>
+                            <th scope="col">Nomor Plat</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Asal</th>
+                            <th scope="col">Tujuan</th>
+                            <th scope="col">Keberangkatan</th>
+                            <th scope="col">Kedatangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['noSeri']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['nama']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['asal']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['tujuan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['keberangkatan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['kedatangan']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='6'>Tidak ada jadwal tersedia.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+        </section>
+    </main>
+    </main>

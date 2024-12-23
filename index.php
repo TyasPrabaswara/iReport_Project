@@ -64,6 +64,8 @@
             echo '<link rel="stylesheet" href="css/sidebar.css">';
             // echo '<link rel="stylesheet" href="css/customerService.css">';
             break;
+        case 'aboutUs':
+            echo '<link rel="stylesheet" href="css/sidebar.css">';
 
         default:
             echo '<link rel="stylesheet" href="css/home.css">';
@@ -147,6 +149,7 @@
                     $file_path = "page/tambahjadwal.php";
                     break;
                 case 'aboutUs':
+                    include 'includes/navbarMenuItems.php';
                     $file_path = "page/aboutUs.php";
                     break;
             }

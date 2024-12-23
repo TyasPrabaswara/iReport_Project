@@ -13,7 +13,7 @@
         </div>
         
         <div class="footer-links">
-            <a href="/about-us" class="footer-link">about us</a>
+            <a href="index.php?page=aboutUs" class="footer-link">about us</a>
             <a href="/how-to-report" class="footer-link">how to report</a>
             <a href="/faq" class="footer-link">FAQ</a>
             <a href="/terms" class="footer-link">terms & conditions</a>
