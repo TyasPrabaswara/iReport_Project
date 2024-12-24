@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +15,9 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-     include 'db/database.php';
-     include 'db/userFunctions.php';
-     include 'db/reportFunctions.php';
+    include 'db/database.php';
+    include 'db/userFunctions.php';
+    include 'db/reportFunctions.php';
 
     $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -131,7 +131,7 @@
                     $file_path = "page/viewReport.php";
                     break;
                 case 'deletejadwal':
-                    $file_path = "page/deleteberita.php";
+                    $file_path = "page/deletejadwal.php";
                     break;
                 case 'dashboard':
                     $file_path = "page/dashboard.php";
@@ -152,6 +152,18 @@
                     include 'includes/navbarMenuItems.php';
                     $file_path = "page/aboutUs.php";
                     break;
+                case 'editberita':
+                    $file_path = "page/editberita.php";
+                    break;
+                case 'editjadwalKRL':
+                    $file_path = "page/editjadwalKRL.php";
+                    break;
+                case 'editjadwalKereta':
+                    $file_path = "page/editjadwalKereta.php";
+                    break;
+                case 'editjadwalBus':
+                    $file_path = "page/editjadwalBus.php";
+                    break;
             }
         }
 
@@ -162,7 +174,7 @@
         }
         ?>
     </main>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <?php include 'includes/footer.php'; ?>
 </body>
