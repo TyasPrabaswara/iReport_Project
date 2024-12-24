@@ -10,7 +10,7 @@ if (isset($_POST['regist'])) {
         alert('User registered successfully.');
         </script>";
         $_SESSION['role'] = 'user';
-        header("Location: index.php?page=home");
+        header("Location: index.php?page=login");
         exit();
     } else {
         echo "Error: " . mysqli_error($conn);
