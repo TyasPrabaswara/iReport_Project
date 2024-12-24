@@ -1,11 +1,11 @@
 services:
   web:
     image: ireport_apache_image
-    container_name: webserver
+    container_name: ireport
     ports:
       - "80:80"
     volumes:
-      - /media/Londinium/uni/iReport/webfolder/:/var/www/html
+      - C:\Users\PREDATOR\Documents\File Kuliah\Project\Semester 3\iReportEXPO\webfolder:/var/www/html
     networks:
       - appireport
     depends_on:
@@ -30,7 +30,7 @@ services:
     environment:
       PMA_HOST: db  # Point to the MySQL container
       PMA_USER: ireportUser  # Use the root user
-      PMA_PASSWORD: ireportUserPassword  # Use the root password set in db
+      PMA_PASSWORD: ireportPass  # Use the root password set in db
     ports:
       - "8080:80"  # Expose phpMyAdmin on port 8080
     networks:

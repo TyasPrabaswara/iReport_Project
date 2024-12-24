@@ -3,7 +3,7 @@
 $hostname = "db";
 $dbname = "ireport";     // Sesuaikan dengan nama database
 $username = "ireportUser";      // Sesuaikan dengan username MySQL
-$password = "ireportUserPassword";          // Sesuaikan dengan password MySQL
+$password = "ireportPass";          // Sesuaikan dengan password MySQL
 
 // Create connection
 $conn = mysqli_connect($hostname, $username, $password, $dbname);
