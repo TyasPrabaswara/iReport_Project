@@ -48,16 +48,16 @@ if (isset($_POST['update'])) {
                 <h2 class="text-center text-light">Admin Dashboard</h2>
                 <ul class="nav flex-column mt-4 w-100">
                     <li class="nav-item active">
-                        <a class="nav-link text-white" href="admin.php">Dashboard</a>
+                        <a class="nav-link text-white" href="index.php?page=dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="deleteberita.php">Berita</a>
+                        <a class="nav-link text-white" href="index.php?page=deleteberita">Berita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="deletejadwal.php">Jadwal</a>
+                        <a class="nav-link text-white" href="index.php?page=deletejadwal">Jadwal</a>
                     </li>
                     <li>
-                        <a class="nav-link text-white" href="editCS.php">Customers Service</a>
+                        <a class="nav-link text-white" href="index.php?page=editCS">Customers Service</a>
                     </li>
 
                 </ul>
